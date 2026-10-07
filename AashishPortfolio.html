@@ -1,0 +1,2343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashish Mistari | Renewable Energy Engineer</title>
+<meta name="description" content="Portfolio of Ashish Mistari, a Renewable Energy Engineer specializing in wind energy, solar PV, and energy-system modelling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ============ RESET & TOKENS ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:            #F6F7F9;
+  --bg-2:          #EDEFF3;
+  --surface:       #FFFFFF;
+  --surface-2:     #F1F3F6;
+  --border:        #E1E4E9;
+  --text:          #1F2430;
+  --text-dim:      #5B6472;
+  --text-faint:    #97A0AC;
+  --accent:        #2F7D5C;
+  --accent-2:      #1F5C42;
+  --accent-dim:    rgba(47,125,92,0.12);
+  --btn-primary-bg:   var(--accent);
+  --btn-primary-text: #FFFFFF;
+  --body-tint:        rgba(246,247,249,0.9);
+  --section-alt-bg:   rgba(237,239,243,0.84);
+  --hero-overlay-1: rgba(246,247,249,0.92);
+  --hero-overlay-2: rgba(246,247,249,0.76);
+  --hero-overlay-3: rgba(237,239,243,0.38);
+  --hero-overlay-4: rgba(246,247,249,0.14);
+  --hero-image-filter: none;
+  --navbar-bg:     rgba(246,247,249,0.82);
+  --amber:         #B4832F;
+  --amber-dim:     rgba(180,131,47,0.13);
+  --font-display:  'Outfit', sans-serif;
+  --font-body:     'Inter', sans-serif;
+  --r:             10px;
+  --r-lg:          16px;
+  --container:     1080px;
+}
+
+/* ============ DARK THEME (inverted palette, same layout) ============ */
+:root[data-theme="dark"]{
+  --bg:            #0A0B0D;
+  --bg-2:          #131519;
+  --surface:       #16181D;
+  --surface-2:     #1D2025;
+  --border:        #2B2F36;
+  --text:          #F2F3F5;
+  --text-dim:      #B7BCC5;
+  --text-faint:    #7D828C;
+  --accent:        #5FCB92;
+  --accent-2:      #8FE0B4;
+  --accent-dim:    rgba(95,203,146,0.18);
+  --btn-primary-bg:   #EDEFF2;
+  --btn-primary-text: #101215;
+  --body-tint:        rgba(10,11,13,0.92);
+  --section-alt-bg:   rgba(19,21,25,0.9);
+  --hero-overlay-1: rgba(10,11,13,0.92);
+  --hero-overlay-2: rgba(10,11,13,0.76);
+  --hero-overlay-3: rgba(19,21,25,0.42);
+  --hero-overlay-4: rgba(10,11,13,0.16);
+  --hero-image-filter: invert(1) hue-rotate(180deg) brightness(0.94);
+  --navbar-bg:     rgba(10,11,13,0.78);
+  --amber:         #D9A94F;
+  --amber-dim:     rgba(217,169,79,0.16);
+}
+html{scroll-behavior:smooth;}
+button, a, input, select, .chat-fab, .corner-btn, .chat-chip, .chat-autocomplete-item{
+  touch-action:manipulation; /* stops double-tap-to-zoom from firing on interactive elements */
+}
+body{
+  background:var(--body-tint); color:var(--text); font-family:var(--font-body);
+  font-size:15px; line-height:1.7; overflow-x:hidden;
+  transition:background-color .45s cubic-bezier(.4,0,.2,1), color .45s cubic-bezi
+    er(.4,0,.2,1);
+}
+.container{max-width:var(--container); margin:0 auto; padding:0 2rem;}
+h1,h2,h3,h4{font-family:var(--font-display); font-weight:600; letter-spacing:-0.01em;}
+a{color:inherit;}
+img{max-width:100%; display:block;}
+
+/* Reveal-on-scroll */
+.hidden{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+.hidden.show{opacity:1; transform:translateY(0);}
+
+/* ============ NAVBAR ============ */
+.navbar{
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  height:64px; display:flex; align-items:center; justify-content:space-between;
+  padding:0 2rem; background:var(--navbar-bg); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  transition:background .45s cubic-bezier(.4,0,.2,1), border-color .45s cubic-bezier(.4,0,.2,1);
+}
+.logo{font-family:var(--font-display); font-weight:700; font-size:19px; letter-spacing:-0.01em;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex; gap:0.25rem; list-style:none;}
+.nav-links a{
+  font-size:13px; font-weight:500; color:var(--text-dim); text-decoration:none;
+  padding:8px 14px; border-radius:99px; transition:color .15s, background .15s;
+}
+.nav-links a:hover{color:var(--text); background:var(--surface-2);}
+.hamburger{display:none; font-size:20px; color:var(--text); cursor:pointer; background:none; border:none;}
+
+/* ============ CHAT ASSISTANT ============ */
+.chat-fab{
+  position:fixed; right:24px; bottom:24px; z-index:800;
+  width:56px; height:56px; border-radius:50%; border:1px solid var(--border);
+  background:var(--surface); color:var(--accent); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 8px 24px rgba(38,43,51,0.14); transition:transform .18s, box-shadow .18s;
+}
+.chat-fab:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(38,43,51,0.18);}
+.chat-fab svg{width:26px; height:26px;}
+.chat-fab .fab-dot{
+  position:absolute; top:6px; right:6px; width:9px; height:9px; border-radius:50%;
+  background:var(--accent); border:2px solid var(--surface);
+}
+.chat-panel{
+  position:fixed; right:24px; bottom:92px; z-index:800;
+  width:336px; max-width:calc(100vw - 32px); height:440px; max-height:calc(100vh - 140px);
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg);
+  box-shadow:0 20px 48px rgba(38,43,51,0.18); display:flex; flex-direction:column; overflow:hidden;
+  opacity:0; visibility:hidden; transform:translateY(12px) scale(.98); transform-origin:bottom right;
+  transition:opacity .18s, transform .18s, visibility .18s;
+}
+.chat-panel.open{opacity:1; visibility:visible; transform:translateY(0) scale(1);}
+.chat-head{
+  display:flex; align-items:center; gap:10px; padding:14px 16px; border-bottom:1px solid var(--border);
+  background:var(--surface);
+}
+.chat-head .bot-avatar{
+  width:32px; height:32px; border-radius:50%; background:var(--accent-dim); color:var(--accent);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.chat-head .bot-avatar svg{width:19px; height:19px;}
+.chat-head-text{line-height:1.25;}
+.chat-head-text .name{font-family:var(--font-display); font-size:13.5px; font-weight:700; color:var(--text);}
+.chat-head-text .status{font-size:11px; color:var(--text-faint); display:flex; align-items:center; gap:5px;}
+.chat-head-text .status::before{content:''; width:6px; height:6px; border-radius:50%; background:#4CAF7D;}
+.chat-close{background:none; border:none; color:var(--text-dim); cursor:pointer; font-size:15px; padding:4px;}
+.chat-close:hover{color:var(--text);}
+
+/* ============ CORNER CONTROLS (binaural + voice mute, opposite the chat FAB) ============ */
+.corner-controls{
+  position:fixed; left:24px; bottom:24px; z-index:800;
+  display:flex; align-items:center; gap:10px;
+}
+.corner-btn{
+  display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px;
+  border-radius:50%; border:1px solid var(--border); background:var(--surface); color:var(--text-dim);
+  cursor:pointer; font-size:15px; box-shadow:0 8px 24px rgba(38,43,51,0.14);
+  transition:color .15s, border-color .15s, background .15s, box-shadow .18s, transform .18s;
+}
+.corner-btn:hover{color:var(--accent); border-color:var(--accent); transform:translateY(-2px);}
+.corner-btn.active{
+  color:var(--accent); border-color:var(--accent); background:var(--accent-dim);
+  box-shadow:0 0 0 3px var(--accent-dim);
+}
+#binauralToggle.active i{animation:binauralPulse 1.8s ease-in-out infinite;}
+.corner-btn.muted{color:var(--text-faint);}
+@keyframes binauralPulse{
+  0%, 100%{opacity:1;}
+  50%{opacity:0.55;}
+}
+@media (prefers-reduced-motion: reduce){
+  #binauralToggle.active i{animation:none;}
+}
+@media (max-width:640px){
+  .corner-controls{left:16px; bottom:16px; gap:8px;}
+  .corner-btn{width:42px; height:42px; font-size:14px;}
+}
+.chat-body{flex:1; overflow-y:auto; padding:14px 16px; display:flex; flex-direction:column; gap:10px;}
+.chat-msg{max-width:85%; font-size:13px; line-height:1.5; padding:9px 12px; border-radius:12px; word-wrap:break-word;}
+.chat-msg.bot{align-self:flex-start; background:var(--surface-2); color:var(--text); border-bottom-left-radius:4px;}
+.chat-msg.user{align-self:flex-end; background:var(--btn-primary-bg); color:var(--btn-primary-text); border-bottom-right-radius:4px;}
+.chat-msg a{color:inherit; text-decoration:underline;}
+.chat-suggestions{display:flex; flex-wrap:wrap; gap:6px; padding:0 16px 12px;}
+.chat-chip{
+  font-size:11.5px; padding:6px 10px; border-radius:99px; border:1px solid var(--border);
+  background:var(--surface); color:var(--text-dim); cursor:pointer; transition:border-color .3s ease, background-color .3s ease, color .3s ease;
+}
+.chat-chip:hover{border-color:var(--accent); color:var(--accent);}
+.chat-input-row{position:relative; display:flex; align-items:center; gap:8px; padding:12px; border-top:1px solid var(--border);}
+.chat-autocomplete{
+  position:absolute; left:12px; right:12px; bottom:calc(100% + 4px);
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.1); overflow:hidden;
+  display:none; max-height:180px; overflow-y:auto; z-index:5;
+}
+.chat-autocomplete.open{display:block;}
+.chat-autocomplete-item{
+  padding:9px 14px; font-size:12.5px; color:var(--text); cursor:pointer;
+  border-bottom:1px solid var(--border); transition:background .12s;
+}
+.chat-autocomplete-item:last-child{border-bottom:none;}
+.chat-autocomplete-item:hover, .chat-autocomplete-item.active{background:var(--surface-2); color:var(--accent);}
+.chat-autocomplete-item i{margin-right:7px; font-size:11px; opacity:.7; width:12px; text-align:center;}
+.chat-input-row input{
+  flex:1; border:1px solid var(--border); border-radius:99px; padding:8px 14px; font-size:16px;
+  font-family:var(--font-body); color:var(--text); background:var(--bg); outline:none;
+}
+.chat-input-row input:focus{border-color:var(--accent);}
+.chat-send{
+  width:34px; height:34px; border-radius:50%; border:none; background:var(--btn-primary-bg); color:var(--btn-primary-text);
+  display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; font-size:13px;
+}
+.chat-send:hover{opacity:0.88;}
+.chat-mic{
+  width:34px; height:34px; border-radius:50%; border:1px solid var(--border); background:var(--surface);
+  color:var(--text-dim); display:flex; align-items:center; justify-content:center; cursor:pointer;
+  flex-shrink:0; font-size:13px; transition:color .15s, border-color .15s, background .15s;
+}
+.chat-mic:hover{color:var(--accent); border-color:var(--accent);}
+.chat-mic.listening{color:#fff; background:#E5484D; border-color:#E5484D; animation:micPulse 1.4s ease-in-out infinite;}
+@keyframes micPulse{
+  0%, 100% { box-shadow:0 0 0 0 rgba(229,72,77,0.45); }
+  50%      { box-shadow:0 0 0 8px rgba(229,72,77,0); }
+}
+.chat-mic[disabled]{opacity:0.35; cursor:not-allowed;}
+@media (prefers-reduced-motion: reduce){ .chat-mic.listening{ animation:none; } }
+.typing-indicator{display:flex; gap:4px; align-self:flex-start; padding:9px 12px; background:var(--surface-2); border-radius:12px; border-bottom-left-radius:4px;}
+.typing-indicator span{width:5px; height:5px; border-radius:50%; background:var(--text-faint); animation:tiBounce 1.1s infinite ease-in-out;}
+.typing-indicator span:nth-child(2){animation-delay:.15s;}
+.typing-indicator span:nth-child(3){animation-delay:.3s;}
+@keyframes tiBounce{0%,60%,100%{transform:translateY(0); opacity:.5;} 30%{transform:translateY(-3px); opacity:1;}}
+@media (max-width:480px){
+  .chat-panel{right:16px; bottom:84px; width:calc(100vw - 32px);}
+  .chat-fab{right:16px; bottom:16px;}
+}
+
+#themeToggle:hover{transform:translateY(-2px) rotate(-14deg);}
+
+/* ============ ENERGY PARTICLE BACKGROUND ============ */
+#energyBg{position:fixed; inset:0; z-index:-1; width:100vw; height:100vh; pointer-events:none; display:block;}
+
+/* ============ LANGUAGE SWITCHER ============ */
+.lang-item{display:flex; align-items:center; margin-left:6px;}
+.lang-select{
+  appearance:none; -webkit-appearance:none; font-family:var(--font-body);
+  font-size:16px; font-weight:600; color:var(--text-dim); background:var(--surface-2);
+  border:1px solid var(--border); border-radius:99px; padding:6px 26px 6px 14px; cursor:pointer;
+  transition:border-color .3s ease, color .3s ease, background-color .3s ease;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6z' fill='%23656C78'/></svg>");
+  background-repeat:no-repeat; background-position:right 12px center;
+}
+.lang-select:hover, .lang-select:focus{border-color:var(--accent); color:var(--text); outline:none;}
+:root[data-theme="dark"] .lang-select{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6z' fill='%23B7BCC5'/></svg>");
+}
+
+/* ============ HERO ============ */
+.parallax-section{position:relative; min-height:100vh; display:flex; align-items:center;}
+.hero-background{position:absolute; inset:0; z-index:0; overflow:hidden;}
+.hero-image-container{position:relative; width:100%; height:100%;}
+.hero-bg-image{
+  position:absolute; inset:0; width:100%; height:100%; display:block;
+  filter:var(--hero-image-filter); transition:filter .4s ease;
+}
+.hero-sun circle{ animation: sunPulse 5s ease-in-out infinite; }
+@keyframes sunPulse{
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50%      { opacity: 0.65; transform: scale(1.04); }
+}
+.hero-sun{ transform-box: fill-box; transform-origin: center; }
+
+.hero-blades{
+  transform-box: fill-box; transform-origin: center;
+  animation: bladeSpin 7s linear infinite;
+}
+.hero-blades-2{ animation-duration: 9.5s; animation-direction: reverse; }
+.hero-blades-3{ animation-duration: 6.2s; }
+@keyframes bladeSpin{ to { transform: rotate(360deg); } }
+
+.hero-flow path{
+  stroke-dasharray: 10 9;
+  animation: flowMove 1.6s linear infinite;
+}
+.hero-flow path:nth-child(2){ animation-duration: 2s; animation-delay: -0.5s; }
+.hero-flow path:nth-child(3){ animation-duration: 2.4s; animation-delay: -1s; }
+@keyframes flowMove{ to { stroke-dashoffset: -38; } }
+
+.hero-solar-glint{
+  animation: solarGlint 4.5s ease-in-out infinite;
+}
+@keyframes solarGlint{
+  0%, 100% { opacity: 0; }
+  50%      { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-sun circle, .hero-blades, .hero-flow path, .hero-solar-glint{ animation: none; }
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(115deg, var(--hero-overlay-1) 0%, var(--hero-overlay-2) 35%, var(--hero-overlay-3) 65%, var(--hero-overlay-4) 100%),
+    linear-gradient(0deg, var(--bg) 0%, rgba(246,247,249,0) 22%);
+  transition:background .4s ease;
+}
+.hero-content{position:relative; z-index:1; padding:6rem 2rem 4rem; max-width:var(--container); margin:0 auto; width:100%;}
+.hero-content h1{font-size:56px; line-height:1.05; margin-bottom:0.5rem;}
+.hero-content h1 .highlight{color:var(--accent);}
+.hero-content h2{
+  font-size:22px; font-weight:400; color:var(--text-dim); margin-bottom:1.25rem;
+  font-family:var(--font-body); min-height:32px;
+}
+#typing-text{color:var(--accent); font-weight:600; border-right:2px solid var(--accent);}
+.hero-content p{font-size:15.5px; color:var(--text-dim); max-width:520px; margin-bottom:2rem;}
+.cta-buttons{display:flex; gap:12px; flex-wrap:wrap;}
+.btn{
+  font-family:var(--font-body); font-size:13.5px; font-weight:600; text-decoration:none;
+  padding:12px 26px; border-radius:99px; transition:transform .15s, opacity .15s, background-color .3s ease, color .3s ease;
+  display:inline-block;
+}
+.btn.primary{background:var(--btn-primary-bg); color:var(--btn-primary-text);}
+.btn.primary:hover{transform:translateY(-2px); opacity:0.92;}
+.btn.secondary{background:transparent; color:var(--text); border:1px solid var(--border);}
+.btn.secondary:hover{background:var(--surface-2); transform:translateY(-2px);}
+
+/* ============ SECTIONS ============ */
+.content-section{padding:5.5rem 0;}
+.content-section:nth-of-type(even){background:var(--section-alt-bg);}
+.section-title{
+  font-size:28px; margin-bottom:2.5rem; display:flex; align-items:center; gap:12px;
+}
+.section-title i{color:var(--accent); font-size:22px;}
+
+/* ============ ABOUT ============ */
+.about-grid{display:block; max-width:760px;}
+.about-text p{font-size:15.5px; color:var(--text-dim); margin-bottom:1.1rem;}
+.about-text p:last-child{margin-bottom:0;}
+
+/* ============ EXPERIENCE TIMELINE ============ */
+.timeline{position:relative; padding-left:2.25rem; border-left:2px solid var(--border);}
+.timeline-item{position:relative; margin-bottom:2.75rem;}
+.timeline-item:last-child{margin-bottom:0;}
+.timeline-item::before{
+  content:''; position:absolute; left:-2.55rem; top:6px;
+  width:11px; height:11px; border-radius:50%;
+  background:var(--accent); box-shadow:0 0 0 4px var(--accent-dim);
+}
+.timeline-content{background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); padding:1.5rem 1.65rem;}
+.company-header{display:flex; align-items:flex-start; gap:14px; margin-bottom:1rem;}
+.company-logo{
+  width:42px; height:42px; border-radius:9px; object-fit:contain;
+  background:#fff; padding:5px; border:1px solid var(--border); flex-shrink:0;
+}
+.logo-fallback{
+  width:42px; height:42px; border-radius:9px; flex-shrink:0;
+  background:var(--accent-dim); border:1px solid var(--border); color:var(--accent);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-weight:700; font-size:16px;
+}
+.job-info{flex:1;}
+.timeline-date{
+  font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--accent);
+}
+.job-info h3{font-size:16px; margin:3px 0 2px;}
+.job-info h4{font-size:13px; font-weight:400; color:var(--text-dim); font-family:var(--font-body);}
+.timeline-content ul{list-style:none;}
+.timeline-content li{
+  font-size:13.5px; color:var(--text-dim); padding:6px 0 6px 20px; position:relative;
+  border-top:1px solid var(--border);
+}
+.timeline-content li:first-child{border-top:none;}
+.timeline-content li::before{
+  content:''; position:absolute; left:2px; top:15px; width:5px; height:5px;
+  border-radius:50%; background:var(--accent);
+}
+
+/* ── KPI badges + scope label (used on the deepest experience cards) ── */
+.kpi-label, .scope-label{
+  font-size:10.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+  margin:14px 0 8px;
+}
+.kpi-label{color:var(--accent);}
+.scope-label{color:var(--text-faint); margin-top:16px;}
+.kpi-badges{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:2px;}
+.kpi-badge{
+  font-size:12px; font-weight:600; color:var(--accent); background:var(--accent-dim);
+  border:1px solid var(--accent); border-radius:99px; padding:5px 12px; white-space:nowrap;
+}
+.tools-label{
+  font-size:10.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--text-faint); margin:16px 0 8px;
+}
+.tools-badges{display:flex; flex-wrap:wrap; gap:8px;}
+.tool-badge{
+  display:flex; align-items:center; gap:6px;
+  font-size:12px; font-weight:600; color:var(--text-dim); background:var(--surface-2);
+  border:1px solid var(--border); border-radius:99px; padding:5px 12px 5px 8px; white-space:nowrap;
+}
+.tool-badge i{color:var(--accent); font-size:12px;}
+
+/* KPI + Tools Used sit side-by-side right under the job header */
+.kpi-tools-row{display:grid; grid-template-columns:1fr 1fr; gap:18px 28px; align-items:start; margin-bottom:4px;}
+.kpi-tools-row .kpi-label, .kpi-tools-row .tools-label{margin-top:14px;}
+@media (max-width:640px){
+  .kpi-tools-row{grid-template-columns:1fr;}
+}
+
+/* ── Expandable pipeline architecture (CMA CGM card) ── */
+.arch-hint{
+  display:flex; align-items:center; gap:7px; margin-top:16px;
+  font-size:12px; color:var(--text-faint); font-style:italic;
+}
+.arch-hint i{color:var(--accent); font-size:11px; font-style:normal;}
+.arch-toggle{
+  position:relative;
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-body); font-size:12.5px; font-weight:600;
+  color:var(--text-dim); background:var(--surface-2); border:1px solid var(--border);
+  border-radius:99px; padding:9px 16px; cursor:pointer; margin-top:8px;
+  transition:color .15s, border-color .15s, background-color .15s;
+}
+.arch-toggle:hover{color:var(--accent); border-color:var(--accent);}
+.arch-toggle i:first-child{color:var(--accent); font-size:12px;}
+.arch-toggle .arch-toggle-caret{font-size:10px; margin-left:2px; transition:transform .3s ease;}
+.arch-toggle[aria-expanded="true"] .arch-toggle-caret{transform:rotate(180deg);}
+
+/* Attention signal: a soft breathing ring + notification dot, shown until
+   the visitor opens the panel once (tracked via localStorage), so it draws
+   the eye without nagging returning visitors. */
+.arch-toggle.pulse-attn{animation:archRingPulse 2.2s ease-in-out infinite;}
+.arch-toggle.pulse-attn::after{
+  content:''; position:absolute; top:-4px; right:-4px;
+  width:10px; height:10px; border-radius:50%;
+  background:var(--accent); box-shadow:0 0 0 2px var(--surface);
+  animation:archDotPulse 2.2s ease-in-out infinite;
+}
+@keyframes archRingPulse{
+  0%{box-shadow:0 0 0 0 var(--accent-dim);}
+  60%{box-shadow:0 0 0 9px rgba(0,0,0,0);}
+  100%{box-shadow:0 0 0 0 rgba(0,0,0,0);}
+}
+@keyframes archDotPulse{
+  0%, 100%{transform:scale(1); opacity:1;}
+  50%{transform:scale(1.25); opacity:.75;}
+}
+@media (prefers-reduced-motion: reduce){
+  .arch-toggle.pulse-attn, .arch-toggle.pulse-attn::after{animation:none;}
+}
+
+.arch-panel-wrap{
+  display:grid; grid-template-rows:0fr;
+  transition:grid-template-rows .45s cubic-bezier(.4,0,.2,1);
+}
+.arch-panel-wrap.open{grid-template-rows:1fr;}
+.arch-panel-inner{overflow:hidden; min-height:0;}
+.arch-panel{padding-top:18px; margin-top:18px; border-top:1px solid var(--border);}
+.arch-intro{font-size:13px; color:var(--text-dim); line-height:1.65; margin-bottom:20px;}
+.arch-intro strong{color:var(--text); font-weight:600;}
+
+.arch-diagram{display:flex; flex-direction:column;}
+.arch-layer-label{
+  font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--text-faint); text-align:center; margin-bottom:9px;
+}
+.arch-layer-label.amber{color:var(--amber);}
+.arch-row{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:2px;}
+.arch-node{
+  flex:1 1 145px; max-width:210px;
+  display:flex; flex-direction:column; align-items:center; text-align:center; gap:4px;
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--r);
+  padding:13px 10px;
+}
+.arch-node.wide{max-width:520px; flex:1 1 100%;}
+.arch-node i{color:var(--accent); font-size:15px; margin-bottom:1px;}
+.arch-node-title{font-size:12.5px; font-weight:700; color:var(--text); font-family:var(--font-display);}
+.arch-node span{font-size:10.5px; color:var(--text-faint); line-height:1.4;}
+.arch-node.amber{border-color:var(--amber); background:var(--amber-dim);}
+.arch-node.amber i{color:var(--amber);}
+.arch-arrow{text-align:center; color:var(--text-faint); font-size:13px; margin:6px 0;}
+.arch-arrow.amber{color:var(--amber);}
+@media (max-width:640px){
+  .arch-node{flex:1 1 42%;}
+}
+
+/* ============ PROJECTS ============ */
+.projects-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem;}
+.project-card{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg);
+  padding:1.4rem; display:flex; flex-direction:column; transition:border-color .3s ease, background-color .3s ease, transform .2s;
+}
+.project-card:hover{border-color:var(--accent); transform:translateY(-3px);}
+.project-header{display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:8px;}
+.project-header h3{font-size:15px;}
+.project-links{display:flex; gap:8px;}
+.project-link{color:var(--text-dim); font-size:15px; transition:color .15s;}
+.project-link:hover{color:var(--accent);}
+.project-link.soon{cursor:default; opacity:0.55;}
+.project-link.soon:hover{color:var(--text-dim);}
+.soon-tag{
+  font-size:11px; font-weight:600; padding:2px 9px; border-radius:99px;
+  background:var(--surface-2); color:var(--text-faint); border:1px solid var(--border);
+}
+.project-description{font-size:13px; color:var(--text-dim); flex:1; margin-bottom:12px;}
+.project-tags{display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px;}
+.project-tag{
+  font-size:10.5px; padding:3px 9px; border-radius:99px; background:var(--surface-2);
+  color:var(--text-dim); border:1px solid var(--border);
+}
+.project-stats{display:flex; align-items:center; gap:12px; font-size:12px; color:var(--text-faint); margin-bottom:6px;}
+.language-tag{padding:2px 9px; border-radius:99px; font-weight:600; font-size:11px;}
+.stat i{margin-right:4px;}
+.project-updated{font-size:11px; color:var(--text-faint);}
+.projects-status{font-size:13px; color:var(--text-dim); margin-bottom:1.5rem;}
+.projects-status i{color:var(--accent); margin-right:6px;}
+.projects-fallback{
+  background:var(--surface); border:1px dashed var(--border); border-radius:var(--r-lg);
+  padding:2rem; text-align:center; color:var(--text-dim); font-size:13.5px;
+}
+.projects-fallback a{color:var(--accent); font-weight:600; text-decoration:none;}
+
+/* ============ CARDS GRID (certs / education) ============ */
+.cards-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem;}
+.card{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg);
+  padding:1.35rem; transition:border-color .3s ease, background-color .3s ease, transform .2s;
+}
+.card:hover{border-color:var(--accent); transform:translateY(-3px);}
+.cert-link{text-decoration:none; color:inherit; display:block;}
+.card-header{display:flex; align-items:flex-start; gap:12px;}
+.card-header .company-logo{width:36px; height:36px;}
+.card-info h3{font-size:13.5px; line-height:1.4; margin-bottom:3px;}
+.card-info h4{font-size:11.5px; font-weight:400; color:var(--text-dim); font-family:var(--font-body);}
+.card h3{font-size:14.5px; margin-bottom:4px;}
+.card h4{font-size:12.5px; color:var(--accent); font-weight:500; font-family:var(--font-body); margin-bottom:6px;}
+.card .date{font-size:11.5px; color:var(--text-faint); margin-bottom:8px;}
+.card .details{font-size:12.5px; color:var(--text-dim);}
+.cert-note{
+  font-size:12.5px; color:var(--text-faint); margin-top:1.25rem; border-top:1px dashed var(--border);
+  padding-top:1rem;
+}
+
+/* ============ SKILLS ============ */
+.skills-category{margin-bottom:2.25rem;}
+.skills-category:last-child{margin-bottom:0;}
+.skills-category h3{font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-dim); margin-bottom:1rem;}
+.tags{display:flex; flex-wrap:wrap; gap:10px;}
+.skill-icon-card{
+  display:flex; align-items:center; gap:9px; background:var(--surface); border:1px solid var(--border);
+  border-radius:99px; padding:9px 16px; font-size:13px; color:var(--text); transition:border-color .3s ease, background-color .3s ease, color .3s ease, transform .15s;
+}
+.skill-icon-card:hover{border-color:var(--accent); transform:translateY(-2px);}
+.skill-icon-card i{color:var(--accent); font-size:14px;}
+
+/* ============ CONTACT ============ */
+.center-text{text-align:center;}
+.content-section#contact .section-title{justify-content:center;}
+#contact p{color:var(--text-dim); max-width:480px; margin:0 auto 2rem;}
+.social-links{display:flex; justify-content:center; gap:14px;}
+.social-icon{
+  width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  background:var(--surface); border:1px solid var(--border); color:var(--text); font-size:18px;
+  transition:border-color .3s ease, background-color .3s ease, color .3s ease, transform .15s;
+}
+.social-icon:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-3px);}
+
+footer{text-align:center; padding:2rem; font-size:11.5px; color:var(--text-faint); border-top:1px solid var(--border);}
+footer a{color:var(--accent); text-decoration:none;}
+
+/* ============ MOBILE ============ */
+@media (max-width:860px){
+  .nav-links{
+    position:fixed; top:64px; right:0; bottom:0; width:220px; background:var(--bg-2);
+    flex-direction:column; padding:1.5rem; border-left:1px solid var(--border);
+    transform:translateX(100%); transition:transform .25s ease; gap:0.25rem;
+  }
+  .nav-links.active{transform:translateX(0);}
+  .hamburger{display:block;}
+  .hero-content h1{font-size:38px;}
+  .hero-content h2{font-size:17px;}
+  .projects-grid, .cards-grid{grid-template-columns:1fr;}
+  .container{padding:0 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<script>
+/* Apply any saved dark-theme preference before first paint, so there's no
+   flash of the light theme on reload. */
+(function(){
+  try{
+    if (localStorage.getItem('siteTheme') === 'dark'){
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch(e){}
+})();
+</script>
+
+<canvas id="energyBg"></canvas>
+
+<nav class="navbar">
+  <div class="logo">A<span>.</span>Mistari</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero" data-i18n="nav.home">Home</a></li>
+    <li><a href="#about" data-i18n="nav.about">About</a></li>
+    <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+    <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+    <li><a href="#certifications" data-i18n="nav.certifications">Certifications</a></li>
+    <li><a href="#education" data-i18n="nav.education">Education</a></li>
+    <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    <li class="lang-item">
+      <select id="langSelect" class="lang-select" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="de">DE</option>
+        <option value="nl">NL</option>
+      </select>
+    </li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+</nav>
+
+<main>
+  <section id="hero" class="parallax-section">
+    <div class="hero-background">
+      <div class="hero-image-container">
+        <svg class="hero-bg-image" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F6F7F9"/>
+      <stop offset="55%" stop-color="#EDEFF3"/>
+      <stop offset="100%" stop-color="#E3E5E9"/>
+    </linearGradient>
+    <radialGradient id="heroGlow" cx="72%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#2F7D5C" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#2F7D5C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="areaFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2F7D5C" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#2F7D5C" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#heroBase)"/>
+  <rect width="1600" height="900" fill="url(#heroGlow)"/>
+
+  <!-- dot grid -->
+  <g opacity="0.5">
+    <circle cx="560" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="560" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="602" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="644" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="686" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="728" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="770" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="812" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="854" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="896" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="938" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="980" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1022" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1064" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1106" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1148" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1190" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1232" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1274" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1316" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1358" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1400" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1442" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1484" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1526" cy="870" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="30" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="72" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="114" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="156" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="198" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="240" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="282" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="324" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="366" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="408" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="450" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="492" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="534" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="576" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="618" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="660" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="702" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="744" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="786" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="828" r="1.1" fill="#C3D9C8"/><circle cx="1568" cy="870" r="1.1" fill="#C3D9C8"/>
+  </g>
+
+  <!-- sun -->
+  <g class="hero-sun">
+    <circle cx="1410" cy="140" r="58" fill="#F2C15C" opacity="0.85"/>
+    <g stroke="#F2C15C" stroke-width="3" stroke-linecap="round" opacity="0.5">
+      <line x1="1410" y1="52" x2="1410" y2="18"/>
+      <line x1="1410" y1="228" x2="1410" y2="262"/>
+      <line x1="1322" y1="140" x2="1288" y2="140"/>
+      <line x1="1498" y1="140" x2="1532" y2="140"/>
+      <line x1="1348" y1="78" x2="1325" y2="55"/>
+      <line x1="1472" y1="78" x2="1495" y2="55"/>
+      <line x1="1348" y1="202" x2="1325" y2="225"/>
+      <line x1="1472" y1="202" x2="1495" y2="225"/>
+    </g>
+  </g>
+
+  <!-- rolling hills -->
+  <path d="M0,900 L0,700 C220,650 380,690 540,660 C720,626 880,584 1040,616 C1210,650 1360,706 1600,668 L1600,900 Z" fill="#2F7D5C" opacity="0.10"/>
+  <path d="M0,900 L0,770 C260,730 460,758 660,730 C900,696 1100,738 1350,710 C1450,700 1550,708 1600,716 L1600,900 Z" fill="#2F7D5C" opacity="0.16"/>
+
+  <!-- wind turbines -->
+  <g class="hero-turbine" transform="translate(300,900) scale(1.05)">
+    <rect x="-4" y="-268" width="8" height="268" fill="#2F7D5C" opacity="0.5"/>
+    <path d="M-16,0 L16,0 L6,-8 L-6,-8 Z" fill="#2F7D5C" opacity="0.5"/>
+    <g class="hero-blades" transform="translate(0,-268)">
+      <line x1="0" y1="0" x2="0" y2="-72" stroke="#2F7D5C" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+      <line x1="0" y1="0" x2="62" y2="36" stroke="#2F7D5C" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+      <line x1="0" y1="0" x2="-62" y2="36" stroke="#2F7D5C" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+      <circle cx="0" cy="0" r="7" fill="#2F7D5C" opacity="0.6"/>
+    </g>
+  </g>
+
+  <g class="hero-turbine" transform="translate(468,900) scale(0.78)">
+    <rect x="-4" y="-250" width="8" height="250" fill="#2F7D5C" opacity="0.42"/>
+    <path d="M-16,0 L16,0 L6,-8 L-6,-8 Z" fill="#2F7D5C" opacity="0.42"/>
+    <g class="hero-blades hero-blades-2" transform="translate(0,-250)">
+      <line x1="0" y1="0" x2="0" y2="-64" stroke="#2F7D5C" stroke-width="5.5" stroke-linecap="round" opacity="0.45"/>
+      <line x1="0" y1="0" x2="55" y2="32" stroke="#2F7D5C" stroke-width="5.5" stroke-linecap="round" opacity="0.45"/>
+      <line x1="0" y1="0" x2="-55" y2="32" stroke="#2F7D5C" stroke-width="5.5" stroke-linecap="round" opacity="0.45"/>
+      <circle cx="0" cy="0" r="6" fill="#2F7D5C" opacity="0.5"/>
+    </g>
+  </g>
+
+  <g class="hero-turbine" transform="translate(196,900) scale(0.62)">
+    <rect x="-4" y="-240" width="8" height="240" fill="#2F7D5C" opacity="0.3"/>
+    <path d="M-16,0 L16,0 L6,-8 L-6,-8 Z" fill="#2F7D5C" opacity="0.3"/>
+    <g class="hero-blades hero-blades-3" transform="translate(0,-240)">
+      <line x1="0" y1="0" x2="0" y2="-60" stroke="#2F7D5C" stroke-width="5" stroke-linecap="round" opacity="0.34"/>
+      <line x1="0" y1="0" x2="52" y2="30" stroke="#2F7D5C" stroke-width="5" stroke-linecap="round" opacity="0.34"/>
+      <line x1="0" y1="0" x2="-52" y2="30" stroke="#2F7D5C" stroke-width="5" stroke-linecap="round" opacity="0.34"/>
+      <circle cx="0" cy="0" r="5.5" fill="#2F7D5C" opacity="0.4"/>
+    </g>
+  </g>
+
+  <!-- solar panel array -->
+  <g class="hero-solar" transform="translate(1000,742)" opacity="0.5">
+    <g fill="#22352A">
+      <rect x="0" y="26" width="96" height="50" rx="4"/>
+      <rect x="108" y="10" width="96" height="50" rx="4"/>
+      <rect x="216" y="-6" width="96" height="50" rx="4"/>
+      <rect x="324" y="-22" width="96" height="50" rx="4"/>
+    </g>
+    <g stroke="#9BB6A3" stroke-width="1" opacity="0.5">
+      <line x1="32" y1="26" x2="32" y2="76"/><line x1="64" y1="26" x2="64" y2="76"/>
+      <line x1="0" y1="51" x2="96" y2="51"/>
+      <line x1="140" y1="10" x2="140" y2="60"/><line x1="172" y1="10" x2="172" y2="60"/>
+      <line x1="108" y1="35" x2="204" y2="35"/>
+      <line x1="248" y1="-6" x2="248" y2="44"/><line x1="280" y1="-6" x2="280" y2="44"/>
+      <line x1="216" y1="19" x2="312" y2="19"/>
+      <line x1="356" y1="-22" x2="356" y2="28"/><line x1="388" y1="-22" x2="388" y2="28"/>
+      <line x1="324" y1="3" x2="420" y2="3"/>
+    </g>
+    <g class="hero-solar-glint" fill="#F2C15C" opacity="0.4">
+      <rect x="0" y="26" width="96" height="50" rx="4"/>
+    </g>
+  </g>
+
+  <!-- energy transmission lines -->
+  <g class="hero-flow" fill="none" stroke="#2F7D5C" stroke-width="2" opacity="0.4">
+    <path d="M300,632 C520,700 780,720 1000,768"/>
+    <path d="M468,678 C650,720 820,738 1000,768"/>
+    <path d="M196,730 C420,760 700,762 1000,768"/>
+  </g>
+
+</svg>
+        <div class="hero-overlay"></div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <h1 data-i18n-html="hero.greeting">Hi, I'm <span class="highlight">Ashish</span></h1>
+      <h2><span data-i18n="hero.iam">I am a</span> <span id="typing-text">|</span></h2>
+      <p data-i18n="hero.desc">I design and optimize wind turbines, solar PV systems, and energy models that help the renewable-energy transition move forward with clarity - from HAWT blade aerodynamics to zero-emission microgrid design.</p>
+      <div class="cta-buttons">
+        <a href="#experience" class="btn primary" data-i18n="hero.btnViewWork">View Work</a>
+        <a href="#contact" class="btn secondary" data-i18n="hero.btnContactMe">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="content-section">
+    <div class="container hidden">
+      <h2 class="section-title"><i class="fas fa-user"></i> <span data-i18n="about.title">About Me</span></h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p data-i18n="about.p1">I am an International Energy Engineering Master's student with a background in Mechanical Engineering and practical experience in wind-turbine manufacturing, procurement planning, supplier coordination and mechanical assembly. My academic and project experience spans wind energy, solar PV, energy-system modelling, hydropower and Life Cycle Assessment.</p>
+          <p data-i18n="about.p2">I want to become a renewable energy engineer who combines technical engineering with sustainability and innovation. I approach engineering problems analytically and practically, with experience ranging from hands-on industrial assembly to simulation, optimization, technical reporting and environmental assessment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="content-section">
+    <div class="container">
+      <h2 class="section-title hidden"><i class="fas fa-briefcase"></i> <span data-i18n="experience.title">Experience</span></h2>
+      <div class="timeline">
+
+        <div class="timeline-item hidden">
+          <div class="timeline-content">
+            <div class="company-header">
+              <div class="job-info">
+                <span class="timeline-date">Jul 2019 – Jul 2020</span>
+                <h3 data-i18n="exp1.title">Technical Engineering Intern</h3>
+                <h4>GE India Industrial, Pune, India</h4>
+              </div>
+            </div>
+            <ul>
+              <li data-i18n="exp1.b1">Worked across multiple wind-turbine assembly departments, gaining hands-on exposure to production.</li>
+              <li data-i18n="exp1.b2">Gained hands-on exposure to machine-head / nacelle assembly and integration.</li>
+              <li data-i18n="exp1.b3">Worked in SCADA panel assembly and developed a practical understanding of turbine control and monitoring systems.</li>
+              <li data-i18n="exp1.b4">Gained exposure to the DTA Pitch department and pitch-system assembly activities.</li>
+              <li data-i18n="exp1.b5">Developed a practical understanding of industrial manufacturing, assembly procedures and cross-functional production.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item hidden">
+          <div class="timeline-content">
+            <div class="company-header">
+              <div class="job-info">
+                <span class="timeline-date">May 2024 – Sep 2024</span>
+                <h3 data-i18n="exp2.title">Graduate Engineering Trainee, Procurement Planning &amp; Management</h3>
+                <h4>LG India Ltd., Pune, India</h4>
+              </div>
+            </div>
+
+            <div class="scope-label" data-i18n="exp2.scope-label">Key Responsibilities</div>
+            <ul>
+              <li data-i18n="exp2.b1">Prepared annual, quarterly, monthly and weekly procurement reports.</li>
+              <li data-i18n="exp2.b2">Presented procurement performance and updates to senior-level stakeholders and Headquarters teams.</li>
+              <li data-i18n="exp2.b3">Coordinated supplier relationships and managed supplier-related documentation.</li>
+              <li data-i18n="exp2.b4">Managed Master Purchase Agreements (MPAs) and supported supplier agreement administration.</li>
+              <li data-i18n="exp2.b5">Supported Environmental, Health &amp; Safety (EHS) audits for suppliers.</li>
+              <li data-i18n="exp2.b6">Coordinated payment-related activities including credits, debits and payment-term extensions.</li>
+            </ul>
+
+            <div class="tools-label" data-i18n="exp2.tools-label">Key Areas</div>
+            <div class="tools-badges">
+              <span class="tool-badge"><i class="fas fa-file-invoice-dollar"></i>Procurement Reporting</span>
+              <span class="tool-badge"><i class="fas fa-file-signature"></i>Purchase Agreements</span>
+              <span class="tool-badge"><i class="fas fa-handshake"></i>Supplier Coordination</span>
+              <span class="tool-badge"><i class="fas fa-shield-halved"></i>EHS Audits</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item hidden">
+          <div class="timeline-content">
+            <div class="company-header">
+              <div class="job-info">
+                <span class="timeline-date">Jul 2020 – Jul 2021</span>
+                <h3 data-i18n="exp3.title">Operations Intern</h3>
+                <h4>Bajaj Auto Ltd., Pune, India</h4>
+              </div>
+            </div>
+
+            <ul>
+              <li data-i18n="exp3.b1">Gained hands-on experience in assembly of Pulsar motorcycle engines.</li>
+              <li data-i18n="exp3.b2">Learned practical engine-assembly sequences and procedures.</li>
+              <li data-i18n="exp3.b3">Assisted with identification and repair of faulty engine assemblies.</li>
+              <li data-i18n="exp3.b4">Developed a practical understanding of mechanical components, quality checks and troubleshooting.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects" class="content-section">
+    <div class="container">
+      <h2 class="section-title hidden"><i class="fas fa-code"></i> <span data-i18n="projects.title">Featured Projects</span></h2>
+      <p class="projects-status hidden" id="projectsStatus"><i class="fas fa-circle-notch fa-spin"></i> <span data-i18n="projects.loading">Loading projects from GitHub...</span></p>
+      <div id="projects-grid" class="projects-grid"></div>
+    </div>
+  </section>
+
+  <section id="certifications" class="content-section">
+    <div class="container">
+      <h2 class="section-title hidden"><i class="fas fa-star"></i> <span data-i18n="certifications.title">Focus Areas</span></h2>
+      <div class="cards-grid">
+        <div class="card hidden">
+          <div class="card-header">
+            <div class="logo-fallback"><i class="fas fa-wind"></i></div>
+            <div class="card-info">
+              <h3>Wind Energy</h3>
+              <h4><span data-i18n="cert.issued">Focus of</span> M.Eng. International Energy Engineering</h4>
+            </div>
+          </div>
+          <p class="details" style="margin-top:8px;">Supported by practical wind-turbine experience and HAWT design work.</p>
+        </div>
+        <div class="card hidden">
+          <div class="card-header">
+            <div class="logo-fallback"><i class="fas fa-water"></i></div>
+            <div class="card-info">
+              <h3>Hydropower</h3>
+              <h4><span data-i18n="cert.issued">Focus of</span> M.Eng. International Energy Engineering</h4>
+            </div>
+          </div>
+          <p class="details" style="margin-top:8px;">Renewable hydraulic energy systems and technologies.</p>
+        </div>
+        <div class="card hidden">
+          <div class="card-header">
+            <div class="logo-fallback"><i class="fas fa-recycle"></i></div>
+            <div class="card-info">
+              <h3>Life Cycle Assessment</h3>
+              <h4><span data-i18n="cert.issued">Focus of</span> M.Eng. International Energy Engineering</h4>
+            </div>
+          </div>
+          <p class="details" style="margin-top:8px;">Environmental assessment of energy technologies and products.</p>
+        </div>
+        <div class="card hidden">
+          <div class="card-header">
+            <div class="logo-fallback"><i class="fas fa-lightbulb"></i></div>
+            <div class="card-info">
+              <h3>Innovation &amp; Management</h3>
+              <h4><span data-i18n="cert.issued">Focus of</span> M.Eng. International Energy Engineering</h4>
+            </div>
+          </div>
+          <p class="details" style="margin-top:8px;">Innovation processes and the management perspective of engineering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="content-section">
+    <div class="container">
+      <h2 class="section-title hidden"><i class="fas fa-graduation-cap"></i> <span data-i18n="education.title">Education</span></h2>
+      <div class="cards-grid">
+        <div class="card hidden">
+          <h3 data-i18n="edu1.degree">M.Eng. International Energy Engineering</h3>
+          <h4>Ostbayerische Technische Hochschule Amberg-Weiden</h4>
+          <p class="date">2024 – Present · Germany</p>
+          <p class="details">Wind Energy, Hydropower, Life Cycle Assessment, Innovation &amp; Management</p>
+        </div>
+        <div class="card hidden">
+          <h3 data-i18n="edu2.degree">B.Eng. Mechanical Engineering</h3>
+          <h4>Savitribai Phule Pune University (SPPU)</h4>
+          <p class="date">2020 – 2023 · India</p>
+          <p class="details">Mechanical Engineering coursework and fundamentals</p>
+        </div>
+        <div class="card hidden">
+          <h3 data-i18n="edu3.degree">Diploma in Mechanical Engineering</h3>
+          <h4>Government Polytechnic, Jalgaon</h4>
+          <p class="date">2016 – 2019 · India</p>
+          <p class="details">Foundational Mechanical Engineering coursework</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="content-section">
+    <div class="container">
+      <h2 class="section-title hidden"><i class="fas fa-cogs"></i> <span data-i18n="skills.title">Technical Skills</span></h2>
+
+      <div class="skills-category hidden">
+        <h3 data-i18n="skills.cat1">Simulation &amp; Modelling Software</h3>
+        <div class="tags">
+          <div class="skill-icon-card"><i class="fas fa-wind"></i><span>QBlade</span></div>
+          <div class="skill-icon-card"><i class="fas fa-solar-panel"></i><span>Polysun</span></div>
+          <div class="skill-icon-card"><i class="fas fa-recycle"></i><span>GaBi</span></div>
+          <div class="skill-icon-card"><i class="fab fa-python"></i><span>Python</span></div>
+          <div class="skill-icon-card"><i class="fas fa-calculator"></i><span>MATLAB</span></div>
+        </div>
+      </div>
+
+      <div class="skills-category hidden">
+        <h3 data-i18n="skills.cat2">Wind Energy Engineering</h3>
+        <div class="tags">
+          <div class="skill-icon-card"><i class="fas fa-fan"></i><span>Wind Turbine Design</span></div>
+          <div class="skill-icon-card"><i class="fas fa-wind"></i><span>Aerodynamics</span></div>
+          <div class="skill-icon-card"><i class="fas fa-diagram-project"></i><span>BEM Analysis</span></div>
+          <div class="skill-icon-card"><i class="fas fa-gauge-high"></i><span>Rotor Performance</span></div>
+          <div class="skill-icon-card"><i class="fas fa-map-location-dot"></i><span>Wind Resource Assessment</span></div>
+          <div class="skill-icon-card"><i class="fas fa-chart-line"></i><span>Weibull Analysis</span></div>
+        </div>
+      </div>
+
+      <div class="skills-category hidden">
+        <h3 data-i18n="skills.cat3">Solar PV &amp; Techno-Economic Analysis</h3>
+        <div class="tags">
+          <div class="skill-icon-card"><i class="fas fa-solar-panel"></i><span>PV System Design</span></div>
+          <div class="skill-icon-card"><i class="fas fa-chart-area"></i><span>Energy Yield Modelling</span></div>
+          <div class="skill-icon-card"><i class="fas fa-scale-balanced"></i><span>Techno-Economic Analysis</span></div>
+          <div class="skill-icon-card"><i class="fas fa-sack-dollar"></i><span>LCOE &amp; Payback Analysis</span></div>
+          <div class="skill-icon-card"><i class="fas fa-house-chimney"></i><span>Grid-Connected Systems</span></div>
+        </div>
+      </div>
+
+      <div class="skills-category hidden">
+        <h3 data-i18n="skills.cat4">Microgrid &amp; Energy Systems</h3>
+        <div class="tags">
+          <div class="skill-icon-card"><i class="fas fa-network-wired"></i><span>Microgrid Design</span></div>
+          <div class="skill-icon-card"><i class="fas fa-plug-circle-bolt"></i><span>Renewable Integration</span></div>
+          <div class="skill-icon-card"><i class="fas fa-battery-full"></i><span>Storage Systems</span></div>
+          <div class="skill-icon-card"><i class="fas fa-sliders"></i><span>System Optimization</span></div>
+          <div class="skill-icon-card"><i class="fas fa-code-branch"></i><span>oemof.solph</span></div>
+          <div class="skill-icon-card"><i class="fas fa-atom"></i><span>Hydrogen &amp; Power-to-Gas</span></div>
+        </div>
+      </div>
+
+      <div class="skills-category hidden">
+        <h3 data-i18n="skills.cat5">Sustainability &amp; Industrial Practice</h3>
+        <div class="tags">
+          <div class="skill-icon-card"><i class="fas fa-leaf"></i><span>Life Cycle Assessment</span></div>
+          <div class="skill-icon-card"><i class="fas fa-globe"></i><span>Environmental Impact Assessment</span></div>
+          <div class="skill-icon-card"><i class="fas fa-wrench"></i><span>Mechanical Assembly</span></div>
+          <div class="skill-icon-card"><i class="fas fa-handshake"></i><span>Procurement &amp; Supplier Coordination</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact" class="content-section">
+    <div class="container hidden center-text">
+      <h2 class="section-title"><i class="fas fa-envelope"></i> <span data-i18n="contact.title">Get In Touch</span></h2>
+      <p data-i18n="contact.desc">Looking to contribute to the renewable-energy transition, combining practical mechanical-engineering experience with wind and solar system design, energy-system modelling, and sustainability assessment - based in Amberg, Germany.</p>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/ashishmistari" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:a.mistari@oth-aw.de" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Ashish Mistari · <span data-i18n="footer.deployed">Deployed on GitHub Pages</span>
+  </footer>
+</main>
+
+<script>
+/* ===== Hamburger menu ===== */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  const icon = hamburger.querySelector('i');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-xmark');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('active');
+  hamburger.querySelector('i').className = 'fas fa-bars';
+}));
+
+/* ===== Scroll reveal ===== */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.hidden').forEach(el => revealObserver.observe(el));
+
+/* ===== i18n: Translations ===== */
+const TRANSLATIONS = {
+  en: {
+    'nav.home': 'Home', 'nav.about': 'About', 'nav.experience': 'Experience', 'nav.projects': 'Projects',
+    'nav.certifications': 'Focus Areas', 'nav.education': 'Education', 'nav.skills': 'Skills', 'nav.contact': 'Contact',
+    'hero.greeting': 'Hi, I\'m <span class="highlight">Ashish</span>',
+    'hero.iam': 'I am a',
+    'hero.desc': 'I design and optimize wind turbines, solar PV systems, and energy models that help the renewable-energy transition move forward with clarity - from HAWT blade aerodynamics to zero-emission microgrid design.',
+    'hero.btnViewWork': 'View Work', 'hero.btnContactMe': 'Contact Me',
+    'roles': ['Renewable Energy Engineer.', 'Wind Energy Specialist.', 'Sustainability Engineer.', 'Energy Systems Modeler.'],
+    'about.title': 'About Me',
+    'about.p1': 'I am an International Energy Engineering Master\'s student with a background in Mechanical Engineering and practical experience in wind-turbine manufacturing, procurement planning, supplier coordination and mechanical assembly. My academic and project experience spans wind energy, solar PV, energy-system modelling, hydropower and Life Cycle Assessment.',
+    'about.p2': 'I want to become a renewable energy engineer who combines technical engineering with sustainability and innovation. I approach engineering problems analytically and practically, with experience ranging from hands-on industrial assembly to simulation, optimization, technical reporting and environmental assessment.',
+    'experience.title': 'Experience',
+    'exp1.title': 'Technical Engineering Intern',
+    'exp1.b1': 'Worked across multiple wind-turbine assembly departments, gaining hands-on exposure to production.',
+    'exp1.b2': 'Gained hands-on exposure to machine-head / nacelle assembly and integration.',
+    'exp1.b3': 'Worked in SCADA panel assembly and developed a practical understanding of turbine control and monitoring systems.',
+    'exp1.b4': 'Gained exposure to the DTA Pitch department and pitch-system assembly activities.',
+    'exp1.b5': 'Developed a practical understanding of industrial manufacturing, assembly procedures and cross-functional production.',
+    'exp2.title': 'Graduate Engineering Trainee, Procurement Planning & Management',
+    'exp2.b1': 'Prepared annual, quarterly, monthly and weekly procurement reports.',
+    'exp2.b2': 'Presented procurement performance and updates to senior-level stakeholders and Headquarters teams.',
+    'exp2.b3': 'Coordinated supplier relationships and managed supplier-related documentation.',
+    'exp2.b4': 'Managed Master Purchase Agreements (MPAs) and supported supplier agreement administration.',
+    'exp2.b5': 'Supported Environmental, Health & Safety (EHS) audits for suppliers.',
+    'exp2.b6': 'Coordinated payment-related activities including credits, debits and payment-term extensions.',
+    'exp2.scope-label': 'Key Responsibilities',
+    'exp2.tools-label': 'Key Areas',
+    'exp3.title': 'Operations Intern',
+    'exp3.b1': 'Gained hands-on experience in assembly of Pulsar motorcycle engines.',
+    'exp3.b2': 'Learned practical engine-assembly sequences and procedures.',
+    'exp3.b3': 'Assisted with identification and repair of faulty engine assemblies.',
+    'exp3.b4': 'Developed a practical understanding of mechanical components, quality checks and troubleshooting.',
+    'projects.title': 'Featured Projects',
+    'projects.loading': 'Loading projects...',
+    'projects.comingSoon': 'Coming soon',
+    'projects.updated': 'Updated',
+    'proj1.desc': 'Development and evaluation of a modern utility-scale Horizontal Axis Wind Turbine using BEM theory, Schmitz planform optimization, and XFOIL aerodynamic polars across five airfoil families. Achieved a peak power coefficient of 0.5128 - about 85.5% of the Betz limit - beating the NREL 5-MW reference baseline, with resonance-safe structural performance.',
+    'proj2.desc': 'Assessment of high-potential wind-turbine sites using the European Wind Atlas, wind-speed data, Weibull analysis and terrain-roughness evaluation, estimating theoretical annual energy yield and weighing wind consistency against geographic constraints.',
+    'proj3.desc': 'Design and optimization of an integrated zero-emission microgrid in Python with oemof.solph, combining PV, battery storage, hydrogen Power-to-Gas, an electrolyzer, fuel cell, heat pump and thermal storage. The optimized system ran with 0 diesel-generator hours per year.',
+    'proj4.desc': 'Technical and economic assessment of a grid-connected residential solar PV system using Polysun, combining load assessment, PV sizing and energy-yield modelling with Levelized Cost of Electricity (LCOE) and payback analysis.',
+    'proj5.desc': 'Cradle-to-grave Life Cycle Assessment in GaBi comparing rechargeable NiMH and disposable alkaline AA batteries using CML-IA impact assessment, finding substantially lower climate-change impact for the rechargeable battery.',
+    'proj6.desc': 'End-to-end development of a solar-powered aquatic-cleaning prototype, contributing to energy-management integration, prototype fabrication, testing and optimization.',
+    'certifications.title': 'Focus Areas', 'cert.issued': 'Focus of', 'cert.credential': 'Credential', 'cert.credentialId': 'Credential ID',
+    'education.title': 'Education',
+    'edu1.degree': 'M.Eng. International Energy Engineering',
+    'edu2.degree': 'B.Eng. Mechanical Engineering',
+    'edu3.degree': 'Diploma in Mechanical Engineering',
+    'skills.title': 'Technical Skills',
+    'skills.cat1': 'Simulation & Modelling Software', 'skills.cat2': 'Wind Energy Engineering',
+    'skills.cat3': 'Solar PV & Techno-Economic Analysis', 'skills.cat4': 'Microgrid & Energy Systems', 'skills.cat5': 'Sustainability & Industrial Practice',
+    'contact.title': 'Get In Touch',
+    'contact.desc': 'Looking to contribute to the renewable-energy transition, combining practical mechanical-engineering experience with wind and solar system design, energy-system modelling, and sustainability assessment - based in Amberg, Germany.',
+    'footer.deployed': 'Deployed on GitHub Pages',
+    'chat.title': 'Blackpearl', 'chat.status': 'Online',
+    'chat.placeholder': 'Ask about experience, skills, projects…',
+    'chat.listening': 'Listening…',
+    'chat.micDenied': "I can't hear you - microphone access is blocked. Allow it from the lock/site-info icon in your address bar, then try again.",
+    'chat.chip.experience': 'Experience', 'chat.chip.skills': 'Skills', 'chat.chip.projects': 'Projects',
+    'chat.chip.certifications': 'Focus Areas', 'chat.chip.education': 'Education', 'chat.chip.ai': 'Wind Energy',
+    'chat.chip.location': 'Location', 'chat.chip.contact': 'Contact'
+  },
+  fr: {
+    'nav.home': 'Accueil', 'nav.about': 'À propos', 'nav.experience': 'Expérience', 'nav.projects': 'Projets',
+    'nav.certifications': 'Domaines', 'nav.education': 'Formation', 'nav.skills': 'Compétences', 'nav.contact': 'Contact',
+    'hero.iam': 'Je suis',
+    'hero.btnViewWork': 'Voir mes projets', 'hero.btnContactMe': 'Me contacter',
+    'about.title': 'À propos de moi',
+    'experience.title': 'Expérience',
+    'projects.title': 'Projets phares',
+    'projects.loading': 'Chargement des projets...',
+    'projects.comingSoon': 'Bientôt disponible',
+    'projects.updated': 'Mis à jour',
+    'certifications.title': 'Domaines de compétence', 'cert.issued': 'Délivré', 'cert.credential': 'Certificat', 'cert.credentialId': 'ID du certificat',
+    'education.title': 'Formation',
+    'skills.title': 'Compétences techniques',
+    'contact.title': 'Me contacter',
+    'footer.deployed': 'Déployé sur GitHub Pages',
+    /* NOTE: content-specific keys (hero.greeting/desc, roles, about.p1/p2, exp*, proj*.desc,
+       edu*.degree, skills.cat*, contact.desc) are intentionally omitted here so the site
+       falls back to the English text via t() until a French translation pass is done. */
+    'chat.title': 'Blackpearl', 'chat.status': 'En ligne',
+    'chat.placeholder': 'Posez une question sur l\'expérience, les compétences, les projets…',
+    'chat.listening': 'Écoute en cours…',
+    'chat.micDenied': "Je ne vous entends pas - l'accès au microphone est bloqué. Autorisez-le via l'icône de cadenas/infos du site dans la barre d'adresse, puis réessayez.",
+    'chat.chip.experience': 'Expérience', 'chat.chip.skills': 'Compétences', 'chat.chip.projects': 'Projets',
+    'chat.chip.certifications': 'Certifications', 'chat.chip.education': 'Formation', 'chat.chip.ai': 'Outils IA',
+    'chat.chip.location': 'Localisation', 'chat.chip.contact': 'Contact'
+  },
+  de: {
+    'nav.home': 'Start', 'nav.about': 'Über mich', 'nav.experience': 'Erfahrung', 'nav.projects': 'Projekte',
+    'nav.certifications': 'Schwerpunkte', 'nav.education': 'Ausbildung', 'nav.skills': 'Fähigkeiten', 'nav.contact': 'Kontakt',
+    'hero.iam': 'Ich bin',
+    'hero.btnViewWork': 'Projekte ansehen', 'hero.btnContactMe': 'Kontakt aufnehmen',
+    'about.title': 'Über mich',
+    'experience.title': 'Erfahrung',
+    'projects.title': 'Ausgewählte Projekte',
+    'projects.loading': 'Projekte werden geladen...',
+    'projects.comingSoon': 'Demnächst verfügbar',
+    'projects.updated': 'Aktualisiert',
+    'certifications.title': 'Schwerpunkte', 'cert.issued': 'Ausgestellt', 'cert.credential': 'Zertifikat', 'cert.credentialId': 'Zertifikat-ID',
+    'education.title': 'Ausbildung',
+    'skills.title': 'Technische Fähigkeiten',
+    'contact.title': 'Kontakt aufnehmen',
+    'footer.deployed': 'Bereitgestellt auf GitHub Pages',
+    'chat.title': 'Blackpearl', 'chat.status': 'Online',
+    'chat.placeholder': 'Frag nach Erfahrung, Fähigkeiten, Projekten…',
+    'chat.listening': 'Ich höre zu…',
+    'chat.micDenied': 'Ich kann dich nicht hören - der Mikrofonzugriff ist blockiert. Erlaube ihn über das Schloss-/Website-Info-Symbol in der Adressleiste und versuche es erneut.',
+    'chat.chip.experience': 'Erfahrung', 'chat.chip.skills': 'Fähigkeiten', 'chat.chip.projects': 'Projekte',
+    'chat.chip.certifications': 'Zertifizierungen', 'chat.chip.education': 'Ausbildung', 'chat.chip.ai': 'KI-Tools',
+    'chat.chip.location': 'Standort', 'chat.chip.contact': 'Kontakt'
+  },
+  nl: {
+    'nav.home': 'Home', 'nav.about': 'Over mij', 'nav.experience': 'Ervaring', 'nav.projects': 'Projecten',
+    'nav.certifications': 'Focus', 'nav.education': 'Opleiding', 'nav.skills': 'Vaardigheden', 'nav.contact': 'Contact',
+    'hero.iam': 'Ik ben',
+    'hero.btnViewWork': 'Bekijk mijn werk', 'hero.btnContactMe': 'Neem contact op',
+    'about.title': 'Over mij',
+    'experience.title': 'Ervaring',
+    'projects.title': 'Uitgelichte Projecten',
+    'projects.loading': 'Projecten laden...',
+    'projects.comingSoon': 'Binnenkort beschikbaar',
+    'projects.updated': 'Bijgewerkt',
+    'certifications.title': 'Focusgebieden', 'cert.issued': 'Uitgegeven', 'cert.credential': 'Certificaat', 'cert.credentialId': 'Certificaat-ID',
+    'education.title': 'Opleiding',
+    'skills.title': 'Technische Vaardigheden',
+    'contact.title': 'Neem contact op',
+    'footer.deployed': 'Geïmplementeerd op GitHub Pages',
+    'chat.title': 'Blackpearl', 'chat.status': 'Online',
+    'chat.placeholder': 'Vraag naar ervaring, vaardigheden, projecten…',
+    'chat.listening': 'Aan het luisteren…',
+    'chat.micDenied': 'Ik kan je niet horen - microfoontoegang is geblokkeerd. Sta dit toe via het slot-/site-info-icoon in de adresbalk en probeer het opnieuw.',
+    'chat.chip.experience': 'Ervaring', 'chat.chip.skills': 'Vaardigheden', 'chat.chip.projects': 'Projecten',
+    'chat.chip.certifications': 'Certificeringen', 'chat.chip.education': 'Opleiding', 'chat.chip.ai': 'AI-tools',
+    'chat.chip.location': 'Locatie', 'chat.chip.contact': 'Contact'
+  }
+};
+
+let currentLang = localStorage.getItem('siteLang') || 'en';
+function t(key) {
+  return (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][key]) || TRANSLATIONS.en[key] || key;
+}
+
+function applyLanguage(lang) {
+  currentLang = TRANSLATIONS[lang] ? lang : 'en';
+  localStorage.setItem('siteLang', currentLang);
+  document.documentElement.lang = currentLang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.getAttribute('data-i18n'));
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    el.innerHTML = t(el.getAttribute('data-i18n-html'));
+  });
+
+  const langSelect = document.getElementById('langSelect');
+  if (langSelect) langSelect.value = currentLang;
+
+  // Keep the chat assistant's input placeholder in sync with the toggle
+  const chatInputEl = document.getElementById('chatInput');
+  if (chatInputEl) chatInputEl.placeholder = t('chat.placeholder');
+
+  // Re-translate any bot messages already shown in the chat (welcome
+  // message included) so an open conversation updates live, not just
+  // messages sent after the switch.
+  if (typeof window.__refreshChatLanguage === 'function') window.__refreshChatLanguage();
+
+  // Re-render translated project cards without refetching GitHub data
+  if (typeof renderProjects === 'function') renderProjects();
+
+  // Reset the typing effect to the new language's role list
+  roleIndex = 0; charIndex = 0; deleting = false;
+  if (typingEl) typingEl.textContent = '';
+}
+
+const langSelectEl = document.getElementById('langSelect');
+if (langSelectEl) {
+  langSelectEl.addEventListener('change', (e) => applyLanguage(e.target.value));
+}
+
+/* ===== Typing effect ===== */
+const typingEl = document.getElementById('typing-text');
+let roleIndex = 0, charIndex = 0, deleting = false;
+
+function typeLoop() {
+  const roles = t('roles');
+  const current = roles[roleIndex];
+  if (!deleting) {
+    charIndex++;
+    typingEl.textContent = current.slice(0, charIndex);
+    if (charIndex === current.length) {
+      deleting = true;
+      setTimeout(typeLoop, 2800);
+      return;
+    }
+  } else {
+    charIndex--;
+    typingEl.textContent = current.slice(0, charIndex);
+    if (charIndex === 0) {
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+    }
+  }
+  setTimeout(typeLoop, deleting ? 130 : 230);
+}
+typeLoop();
+
+/* Initial language application happens after the project data below is
+   defined, since it also (re)renders the projects grid. */
+
+/* ===== Curated project list =====
+   Cards render immediately from this static data; the "GitHub" and "Live"
+   links simply point straight to each project's repo/site. */
+
+/* Each project links straight to its GitHub repo / live site - no API
+   calls are made to fetch stats, so the section renders instantly.
+   Projects without a published repo yet show a "Coming soon" tag. */
+const CURATED_PROJECTS = [
+  {
+    id: 'proj1',
+    title: 'Modern HAWT Design & Optimization',
+    tags: ['QBlade', 'BEM', 'XFOIL', 'Schmitz Optimization'],
+    github: null,
+    live: null
+  },
+  {
+    id: 'proj2',
+    title: 'Wind Resource Assessment & Site Selection',
+    tags: ['European Wind Atlas', 'Weibull Analysis', 'Terrain Assessment'],
+    github: null,
+    live: null
+  },
+  {
+    id: 'proj3',
+    title: 'Zero-Emission Microgrid Design & Optimization',
+    tags: ['Python', 'oemof.solph', 'PV', 'Hydrogen PtG'],
+    github: null,
+    live: null
+  },
+  {
+    id: 'proj4',
+    title: 'Techno-Economic Residential Solar PV Design',
+    tags: ['Polysun', 'PV Sizing', 'LCOE', 'Payback'],
+    github: null,
+    live: null
+  },
+  {
+    id: 'proj5',
+    title: 'LCA: Rechargeable vs. Disposable AA Batteries',
+    tags: ['GaBi', 'Life Cycle Inventory', 'CML-IA'],
+    github: null,
+    live: null
+  },
+  {
+    id: 'proj6',
+    title: 'Solar-Powered Aquatic Cleaner',
+    tags: ['Energy Management', 'Prototyping', 'Testing'],
+    github: null,
+    live: null
+  }
+];
+
+function projectCard(p) {
+  const tags = p.tags.slice(0, 4).map(tag => `<span class="project-tag">${tag}</span>`).join('');
+
+  const links = p.github
+    ? `<a href="${p.github}" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+       ${p.live ? `<a href="${p.live}" target="_blank" class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></a>` : ''}`
+    : `<span class="project-link soon" title="Repo not published yet"><i class="fas fa-clock"></i></span>`;
+
+  return `
+    <div class="project-card hidden show">
+      <div class="project-header">
+        <h3>${p.title}</h3>
+        <div class="project-links">${links}</div>
+      </div>
+      <p class="project-description">${t(p.id + '.desc')}</p>
+      <div class="project-tags">${tags}</div>
+      <div class="project-stats">
+        ${!p.github ? `<span class="stat soon-tag">${t('projects.comingSoon')}</span>` : ''}
+      </div>
+    </div>`;
+}
+
+function renderProjects() {
+  const grid = document.getElementById('projects-grid');
+  if (!grid) return;
+  grid.innerHTML = CURATED_PROJECTS.map(p => projectCard(p)).join('');
+}
+
+function loadProjects() {
+  const status = document.getElementById('projectsStatus');
+  if (status) status.remove();
+  renderProjects();
+}
+loadProjects();
+
+/* ===== Apply saved/default language to static markup + projects ===== */
+applyLanguage(currentLang);
+</script>
+
+<script>
+/* ===== Sustainability icon background (self-contained canvas) =====
+   A sparse, quiet scatter of renewable-energy / sustainability icons
+   (recycling, leaf, sun, wind, water, solar panel) drifting very slowly
+   across the page - deliberately few of them, with no connecting lines
+   or cursor trail, so the effect reads as a light watermark rather than
+   an animated network. Icons are drawn with the Font Awesome glyphs
+   already loaded on the page, tinted with the site's accent + a few
+   muted nature tones, and softly fade between the accent tones per
+   section as the visitor scrolls. */
+(function(){
+  const canvas = document.getElementById('energyBg');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  // Font Awesome 6 Free (Solid) glyphs: recycle, leaf, sun, wind,
+  // water drop, solar panel, seedling, globe.
+  const ICONS = ['\uf1b8', '\uf06c', '\uf185', '\uf72e', '\uf043', '\uf5ba', '\uf4d8', '\uf0ac'];
+  const PALETTE = ['#3FA66B', '#2E7D5A', '#4FADA6', '#C9A227', '#7FBF7F', '#5F8FE0'];
+
+  let W, H, DPR;
+  let icons = [];
+  let sections = [];
+  let currentSectionId = 'hero';
+
+  function hexToRgb(hex){
+    const v = parseInt(hex.slice(1), 16);
+    return { r: (v >> 16) & 255, g: (v >> 8) & 255, b: v & 255 };
+  }
+  function lerpColor(a, b, t){
+    const ca = hexToRgb(a), cb = hexToRgb(b);
+    const r = Math.round(ca.r + (cb.r - ca.r) * t);
+    const g = Math.round(ca.g + (cb.g - ca.g) * t);
+    const b_ = Math.round(ca.b + (cb.b - ca.b) * t);
+    return `rgb(${r}, ${g}, ${b_})`;
+  }
+
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W * DPR;
+    canvas.height = H * DPR;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    initIcons();
+  }
+
+  function initIcons(){
+    // Deliberately sparse - a light watermark, not a dense field.
+    const count = Math.min(10, Math.max(5, Math.floor((W * H) / 130000)));
+    icons = [];
+    for (let i = 0; i < count; i++){
+      const startColor = PALETTE[i % PALETTE.length];
+      icons.push({
+        glyph: ICONS[i % ICONS.length],
+        x: Math.random() * W,
+        y: Math.random() * H,
+        size: 15 + Math.random() * 10,
+        vx: 0.035 + Math.random() * 0.05,
+        bob: Math.random() * Math.PI * 2,
+        bobSpeed: 0.006 + Math.random() * 0.006,
+        bobAmp: 10 + Math.random() * 14,
+        rot: (Math.random() - 0.5) * 0.3,
+        rotSpeed: (Math.random() - 0.5) * 0.0008,
+        pulse: Math.random() * Math.PI * 2,
+        colorFrom: startColor,
+        colorTo: startColor,
+        colorT: 1
+      });
+    }
+  }
+
+  function updateSection(){
+    let bestId = currentSectionId;
+    let bestOverlap = -Infinity;
+    const centerY = window.innerHeight / 2;
+    for (const s of sections){
+      const rect = s.el.getBoundingClientRect();
+      if (rect.top <= centerY && rect.bottom >= centerY){
+        bestId = s.id;
+        break;
+      }
+      const overlap = -Math.abs((rect.top + rect.bottom) / 2 - centerY);
+      if (overlap > bestOverlap){ bestOverlap = overlap; bestId = s.id; }
+    }
+    if (bestId !== currentSectionId){
+      currentSectionId = bestId;
+      icons.forEach((ic, i) => {
+        ic.colorFrom = currentDisplayColor(ic);
+        ic.colorTo = PALETTE[(i + sections.length) % PALETTE.length];
+        ic.colorT = 0;
+      });
+    }
+  }
+
+  function currentDisplayColor(ic){
+    return ic.colorT >= 1 ? ic.colorTo : lerpColor(ic.colorFrom, ic.colorTo, ic.colorT);
+  }
+
+  let scrollTick = false;
+  function onScroll(){
+    if (scrollTick) return;
+    scrollTick = true;
+    requestAnimationFrame(() => { updateSection(); scrollTick = false; });
+  }
+
+  function step(){
+    for (const ic of icons){
+      ic.x += ic.vx;
+      ic.bob += ic.bobSpeed;
+      ic.rot += ic.rotSpeed;
+      ic.pulse += 0.008;
+      // Carried off the right edge, re-enters from the left - a slow,
+      // continuous drift rather than a bounce.
+      if (ic.x > W + 30){ ic.x = -30; ic.y = Math.random() * H; }
+      if (ic.colorT < 1) ic.colorT = Math.min(1, ic.colorT + 0.015);
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    for (const ic of icons){
+      const glow = 0.5 + Math.sin(ic.pulse) * 0.15;
+      const color = currentDisplayColor(ic);
+      const y = ic.y + Math.sin(ic.bob) * ic.bobAmp * 0.1;
+
+      ctx.save();
+      ctx.translate(ic.x, y);
+      ctx.rotate(ic.rot);
+      ctx.font = `900 ${ic.size}px "Font Awesome 6 Free"`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 4 * glow;
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.16 * glow;
+      ctx.fillText(ic.glyph, 0, 0);
+      ctx.restore();
+    }
+  }
+
+  function loop(){
+    step();
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    ['hero','about','experience','projects','certifications','education','skills','contact'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) sections.push({ id, el });
+    });
+    updateSection();
+  });
+  // in case DOMContentLoaded already fired
+  if (document.readyState !== 'loading'){
+    ['hero','about','experience','projects','certifications','education','skills','contact'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && !sections.find(s => s.id === id)) sections.push({ id, el });
+    });
+  }
+
+  resize();
+  loop();
+})();
+</script>
+
+
+<!-- ============ CHAT ASSISTANT ============ -->
+<button class="chat-fab" id="chatFab" aria-label="Open Blackpearl, Ashish's portfolio assistant" title="Chat with Blackpearl">
+  <span class="fab-dot"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="8" width="14" height="11" rx="3"></rect>
+    <path d="M12 8V4"></path>
+    <circle cx="12" cy="3" r="1.2" fill="currentColor" stroke="none"></circle>
+    <circle cx="9" cy="13.5" r="1.3" fill="currentColor" stroke="none"></circle>
+    <circle cx="15" cy="13.5" r="1.3" fill="currentColor" stroke="none"></circle>
+    <path d="M9 17h6"></path>
+    <path d="M2 12h3"></path>
+    <path d="M19 12h3"></path>
+  </svg>
+</button>
+
+<!-- ============ CORNER CONTROLS (opposite corner from chat) ============ -->
+<div class="corner-controls" id="cornerControls">
+  <button id="themeToggle" class="corner-btn" type="button" aria-pressed="false" aria-label="Toggle dark theme" title="Switch to dark theme">
+    <i class="fas fa-moon"></i>
+  </button>
+  <button id="binauralToggle" class="corner-btn" type="button" aria-pressed="false" aria-label="Toggle layered binaural ambience" title="Play layered binaural ambience">
+    <i class="fas fa-brain"></i>
+  </button>
+  <button id="globalMuteToggle" class="corner-btn" type="button" aria-pressed="false" aria-label="Mute all page sound" title="Mute all sound (voice, binaural)">
+    <i class="fas fa-volume-high"></i>
+  </button>
+</div>
+
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="Blackpearl, Ashish's portfolio assistant">
+  <div class="chat-head">
+    <div class="bot-avatar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="5" y="8" width="14" height="11" rx="3"></rect>
+        <path d="M12 8V4"></path>
+        <circle cx="12" cy="3" r="1.2" fill="currentColor" stroke="none"></circle>
+        <circle cx="9" cy="13.5" r="1.3" fill="currentColor" stroke="none"></circle>
+        <circle cx="15" cy="13.5" r="1.3" fill="currentColor" stroke="none"></circle>
+        <path d="M9 17h6"></path>
+      </svg>
+    </div>
+    <div class="chat-head-text">
+      <div class="name" data-i18n="chat.title">Blackpearl</div>
+      <div class="status" data-i18n="chat.status">Online</div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close chat"><i class="fas fa-xmark"></i></button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-suggestions" id="chatSuggestions">
+    <button class="chat-chip" data-topic="experience_overview" data-i18n="chat.chip.experience">Experience</button>
+    <button class="chat-chip" data-topic="skills_overview" data-i18n="chat.chip.skills">Skills</button>
+    <button class="chat-chip" data-topic="projects_overview" data-i18n="chat.chip.projects">Projects</button>
+    <button class="chat-chip" data-topic="certifications_overview" data-i18n="chat.chip.certifications">Focus Areas</button>
+    <button class="chat-chip" data-topic="education_overview" data-i18n="chat.chip.education">Education</button>
+    <button class="chat-chip" data-topic="skills_wind" data-i18n="chat.chip.ai">Wind Energy</button>
+    <button class="chat-chip" data-topic="location" data-i18n="chat.chip.location">Location</button>
+    <button class="chat-chip" data-topic="contact" data-i18n="chat.chip.contact">Contact</button>
+  </div>
+  <div class="chat-input-row">
+    <div class="chat-autocomplete" id="chatAutocomplete"></div>
+    <input type="text" id="chatInput" placeholder="Ask about experience, skills, projects…" autocomplete="off">
+    <button class="chat-mic" id="chatMic" type="button" aria-label="Ask by voice" title="Ask by voice"><i class="fas fa-microphone"></i></button>
+    <button class="chat-send" id="chatSend" aria-label="Send message"><i class="fas fa-arrow-up"></i></button>
+  </div>
+</div>
+
+<script>
+/* ===== Chatbot voice replies (natural, male or female) =====
+   Speaks every bot message aloud - the greeting and every reply after
+   it - using the browser's built-in speech synthesis. Picks one voice
+   (male or female, randomly) per chat session and sticks with it for
+   the whole conversation, rather than switching voices message to
+   message. Prefers the highest-quality voice the browser has
+   available and leaves pitch untouched so it uses each voice's own
+   natural tone rather than an artificially shifted, robotic-sounding
+   one. Mutable via the speaker icon in the chat header; fails silently
+   if the API isn't available. Note: actual voice quality is entirely
+   down to what the visitor's OS/browser ships - some platforms simply
+   sound more natural than others, and that's outside what this code
+   controls. */
+(function(){
+  const synth = window.speechSynthesis;
+  const noop = function(){};
+  if (!synth) {
+    window.__speakBotMessage = noop;
+    window.__isVoiceMuted = () => true;
+    window.__toggleVoiceMute = noop;
+    return;
+  }
+
+  let voices = [];
+  function loadVoices(){ voices = synth.getVoices() || []; }
+  loadVoices();
+  if ('onvoiceschanged' in synth) synth.onvoiceschanged = loadVoices;
+
+  const LANG_CODES = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', nl: 'nl-NL' };
+  const FEMALE_HINTS = /female|zira|samantha|victoria|karen|susan|fiona|moira|tessa|allison|ava|serena|kate|amelie|amélie|petra|anna|xenia|els|aria|jenny/i;
+  const MALE_HINTS   = /male|david|daniel|alex(?!.*a)|fred|george|james|thomas|oliver|guy|mark|yannick|stefan|markus|xander|ruben|christopher|eric|guy(?!.*a)/i;
+  // Voices tagged like this are the browser's higher-fidelity options
+  // (e.g. Edge's "Online (Natural)" voices, Chrome's "Google" voices)
+  // and sound noticeably less synthetic than the default system voice.
+  const QUALITY_HINTS = /natural|neural|online|premium|enhanced|wavenet|google/i;
+
+  // Locked in once per chat session, so every reply in the conversation
+  // uses the same voice instead of jumping between genders message to
+  // message.
+  const sessionGender = Math.random() < 0.5 ? 'female' : 'male';
+  let muted = false;
+
+  function pickVoice(gender, langCode){
+    if (!voices.length) voices = synth.getVoices() || [];
+    const sameLang = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith(langCode.slice(0,2)));
+    const pool = sameLang.length ? sameLang : voices;
+    const hint = gender === 'female' ? FEMALE_HINTS : MALE_HINTS;
+    const genderMatched = pool.filter(v => hint.test(v.name));
+    const best = genderMatched.find(v => QUALITY_HINTS.test(v.name))
+      || genderMatched[0]
+      || pool.find(v => QUALITY_HINTS.test(v.name))
+      || pool[0]
+      || null;
+    return best;
+  }
+
+  // Strip emoji and collapse HTML down to plain text before speaking,
+  // so TTS doesn't try to pronounce markup or symbols.
+  function toSpokenText(text){
+    return text
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+  }
+
+  function speak(rawText, langKey){
+    if (muted) return;
+    try {
+      synth.cancel();
+      const langCode = LANG_CODES[langKey] || 'en-US';
+      const voice = pickVoice(sessionGender, langCode);
+      const utter = new SpeechSynthesisUtterance(toSpokenText(rawText));
+      if (voice) utter.voice = voice;
+      utter.lang = langCode;
+      // Leave pitch at the voice's own natural setting (1.0) - forcing
+      // it up or down is what makes synthetic voices sound robotic.
+      // A slightly relaxed rate reads as calmer and more conversational.
+      utter.pitch = 1;
+      utter.rate = 0.95;
+      utter.volume = 0.85;
+      synth.speak(utter);
+    } catch (err) { /* speech synthesis unsupported or blocked - ignore */ }
+  }
+
+  function setMuted(next){
+    muted = next;
+    if (muted) synth.cancel();
+  }
+
+  window.__speakBotMessage = speak;
+  window.__isVoiceMuted = () => muted;
+  window.__setVoiceMuted = setMuted;
+})();
+</script>
+
+<script>
+/* ===== Portfolio-aware chat assistant (rule-based, no external API) =====
+   Answers are generated from the portfolio's own content below, matched
+   against the visitor's question via keyword scoring across EN/FR/DE/NL.
+   Replies are always given in whatever language the site's language
+   switcher (top nav) is currently set to. */
+(function(){
+  /* ---- Knowledge base, one object per language, identical keys -----
+     Each entry is a standalone fact scoped to ONE thing (one company,
+     one project, one cert, one degree) so answers stay specific. To add
+     a new fact: add the key to all four language objects, then add a
+     matching rule in SPECIFIC_RULES with keywords in any language. */
+  const KB = {
+    en: {
+      greeting: "Hi, I'm Blackpearl - Ashish's portfolio assistant. ☕ Glad you're here. Whether you're just browsing or looking for something specific, feel free to ask me anything about Ashish's work, or explore the topics below whenever you're ready.",
+      about: "Ashish is a Renewable Energy Engineer and International Energy Engineering Master's student with a background in Mechanical Engineering and hands-on experience in wind-turbine manufacturing, procurement planning and mechanical assembly. His project work spans wind energy, solar PV, energy-system modelling, hydropower and Life Cycle Assessment. Ask me about a specific role, project, or skill for details.",
+
+      experience_overview: "Ashish has held three professional roles - Technical Engineering Intern at GE India Industrial, Graduate Engineering Trainee (Procurement Planning & Management) at LG India Ltd., and Operations Intern at Bajaj Auto Ltd. Ask about any one of these by name for the specifics of what he did there.",
+      exp_ge: "At GE India Industrial (Technical Engineering Intern, Pune, Jul 2019–Jul 2020), Ashish worked across multiple wind-turbine assembly departments, gaining hands-on exposure to machine-head/nacelle assembly and integration, SCADA panel assembly, and the DTA Pitch department's pitch-system assembly activities - building a practical understanding of industrial manufacturing and cross-functional production.",
+      exp_lg: "At LG India Ltd. (Graduate Engineering Trainee, Procurement Planning & Management, Pune, May 2024–Sep 2024), Ashish prepared annual, quarterly, monthly and weekly procurement reports and presented performance updates to senior stakeholders and Headquarters teams. He coordinated supplier relationships and documentation, managed Master Purchase Agreements (MPAs), supported EHS audits for suppliers, and coordinated payment-related activities including credits, debits and payment-term extensions.",
+      exp_bajaj: "At Bajaj Auto Ltd. (Operations Intern, Pune, Jul 2020–Jul 2021), Ashish gained hands-on experience assembling Pulsar motorcycle engines, learning practical engine-assembly sequences and procedures, and assisted with identifying and repairing faulty engine assemblies - building a practical understanding of mechanical components, quality checks and troubleshooting.",
+
+      skills_overview: "Ashish's skills fall into five areas: Simulation & Modelling Software, Wind Energy Engineering, Solar PV & Techno-Economic Analysis, Microgrid & Energy Systems, and Sustainability & Industrial Practice. Ask about any one of these for the specific tools he uses.",
+      skills_software: "Simulation & Modelling Software: QBlade, Polysun and GaBi (advanced), plus Microsoft Excel and LaTeX/Overleaf (advanced); Python, oemof.solph and MATLAB (intermediate).",
+      skills_wind: "Wind Energy Engineering: wind-turbine design, aerodynamics, BEM analysis and rotor performance; wind resource assessment, Weibull analysis and theoretical yield estimation.",
+      skills_solar: "Solar PV & Techno-Economic Analysis: PV system design, energy-yield modelling, techno-economic analysis, LCOE and payback analysis, using tools like Polysun.",
+      skills_microgrid: "Microgrid & Energy Systems: microgrid design, renewable integration, storage systems and energy-system optimization, modelled in Python with oemof.solph, including hydrogen Power-to-Gas pathways.",
+      skills_sustain: "Sustainability & Industrial Practice: Life Cycle Assessment and environmental impact assessment (in GaBi), plus mechanical assembly, troubleshooting, procurement planning and supplier coordination from his industry roles.",
+
+      projects_overview: "Ashish has 6 featured engineering projects: Modern HAWT Design & Optimization (QBlade), Wind Resource Assessment & Site Selection, Zero-Emission Microgrid Design & Optimization, Techno-Economic Residential Solar PV Design, a Life Cycle Assessment of rechargeable vs. disposable AA batteries, and a Solar-Powered Aquatic Cleaner. Ask about any one by name for details.",
+      proj_hawt: "Modern HAWT Design & Optimization (Oct 2025–Present) used QBlade, BEM theory, XFOIL and Schmitz planform optimization to design a utility-scale wind turbine, comparing blade materials and airfoil families (FFA-W3, DU, NACA, SG, Risø) across Reynolds numbers of roughly 3.0–9.5 million. Result: a peak power coefficient (Cp) of 0.5128 - about 85.5% of the Betz limit and better than the NREL 5-MW reference baseline (~0.48–0.49) - with Aluminium 7000 Series showing 2.39 m blade deflection and resonance-safe modal frequencies.",
+      proj_wind_resource: "Wind Resource Assessment & Site Selection (Oct 2025–Jan 2026) used the European Wind Atlas, wind-speed data, Weibull analysis and terrain assessment to identify high-potential wind-turbine sites and estimate their theoretical annual energy yield, weighing wind consistency against geographic and terrain constraints.",
+      proj_microgrid: "The Zero-Emission Microgrid Design & Optimization project (Oct 2025–Feb 2026) modelled an integrated energy system in Python with oemof.solph, combining PV, battery storage, hydrogen Power-to-Gas, an electrolyzer, fuel cell, heat pump and thermal storage. Result: annual PV generation of 1,187,507 kWh (937 kW max DC / 920 kW max AC), 366,370 kWh grid export, the electrolyzer running 3,091 h/year and the fuel cell 1,461 h/year, with the diesel backup generator at 0 hours/year in the optimized simulation.",
+      proj_solarpv: "The Techno-Economic Residential Solar PV Design project (Mar–Jun 2025) used Polysun to model a grid-connected residential PV system, combining load assessment, PV sizing and energy-yield simulation with Levelized Cost of Electricity (LCOE) and payback analysis to assess technical and economic feasibility.",
+      proj_lca: "The Life Cycle Assessment project (Oct 2025–Jan 2026) compared rechargeable NiMH and disposable alkaline AA batteries cradle-to-grave in GaBi using CML-IA impact assessment. Result: climate-change impact of 75.37 kg CO2-eq for the rechargeable battery versus 2,203.3 kg CO2-eq for the disposable battery, with raw-material extraction identified as a major environmental hotspot.",
+      proj_aquatic: "The Solar-Powered Aquatic Cleaner (Jul 2022–May 2023) was a solar-powered aquatic-cleaning system Ashish helped develop end-to-end - energy-management integration, prototype fabrication, testing and optimization.",
+
+      certifications_overview: "Ashish's certifications and coursework are still being finalized - ask instead about his focus areas (Wind Energy, Hydropower, Life Cycle Assessment, Innovation & Management) from his Master's programme, or about his education and technical skills.",
+
+      education_overview: "Ashish has three education entries: an M.Eng. in International Energy Engineering at Ostbayerische Technische Hochschule Amberg-Weiden (2024–Present, Germany), a B.Eng. in Mechanical Engineering from Savitribai Phule Pune University (2020–2023, India), and a Diploma in Mechanical Engineering from Government Polytechnic, Jalgaon (2016–2019, India). Ask about any one for details.",
+      edu_meng: "M.Eng. in International Energy Engineering at Ostbayerische Technische Hochschule Amberg-Weiden, Germany, 2024–Present. Areas of particular interest: Wind Energy (supported by practical turbine experience and HAWT design work), Hydropower, Life Cycle Assessment, and Innovation & Management.",
+      edu_be: "B.Eng. in Mechanical Engineering from Savitribai Phule Pune University (SPPU), India, 2020–2023.",
+      edu_diploma: "Diploma in Mechanical Engineering from Government Polytechnic, Jalgaon, India, 2016–2019 - his earliest technical qualification.",
+      languages: "Ashish speaks Hindi natively, Marathi as a regional language, English at a B2 level, and German at a B1 level - useful for his studies and work in Germany.",
+
+      contact: 'You can reach Ashish by email at <a href="mailto:a.mistari@oth-aw.de">a.mistari@oth-aw.de</a> or connect on <a href="https://linkedin.com/in/ashishmistari" target="_blank">LinkedIn</a>. He\'s looking to contribute to the renewable-energy transition, combining mechanical-engineering experience with wind and solar system design, energy-system modelling, and sustainability assessment.',
+      location: "He's based in Amberg, Germany, where he's completing his Master's in International Energy Engineering.",
+      thanks: "You're welcome! Let me know if there's anything else you'd like to know about Ashish's background.",
+      fallback: "I don't have that specific detail yet. Try naming a role, project or degree directly (e.g. \"GE India\", \"HAWT\", \"QBlade\"), or ask about experience, skills, projects, education, location, or contact in general."
+    },
+    fr: {
+      /* Contenu spécifique non encore traduit : repli automatique vers l'anglais via kbText(). */
+    },
+    de: {
+      /* Personenspezifischer Inhalt noch nicht übersetzt: automatischer Rückgriff auf Englisch über kbText(). */
+    },
+    nl: {
+      /* Persoonsspecifieke inhoud nog niet vertaald: valt automatisch terug op Engels via kbText(). */
+    }
+  };
+
+  /* ---- Matching rules: keywords may be in any of the four languages,
+     so a visitor can ask in EN/FR/DE/NL regardless of the site's
+     current display language - the reply always follows the toggle. */
+  const SPECIFIC_RULES = [
+    { topic: 'exp_ge', kws: ['ge india', 'general electric', 'nacelle', 'scada panel', 'pitch department'] },
+    { topic: 'exp_lg', kws: ['lg india', 'procurement', 'graduate engineering trainee', 'mpa', 'ehs audit'] },
+    { topic: 'exp_bajaj', kws: ['bajaj', 'pulsar', 'operations intern'] },
+
+    { topic: 'skills_software', kws: ['qblade', 'polysun', 'gabi', 'oemof', 'matlab', 'latex', 'overleaf', 'excel', 'software', 'modelling tools'] },
+    { topic: 'skills_wind', kws: ['bem', 'aerodynamics', 'rotor', 'wind resource', 'weibull', 'wind energy engineering', 'wind turbine design'] },
+    { topic: 'skills_solar', kws: ['solar pv', 'pv system', 'lcoe', 'payback', 'techno-economic', 'photovoltaic'] },
+    { topic: 'skills_microgrid', kws: ['microgrid', 'energy system', 'power-to-gas', 'hydrogen', 'fuel cell', 'electrolyzer', 'battery storage'] },
+    { topic: 'skills_sustain', kws: ['life cycle assessment', 'lca', 'environmental impact', 'sustainability', 'mechanical assembly', 'supplier coordination'] },
+
+    { topic: 'proj_hawt', kws: ['hawt', 'blade design', 'schmitz', 'xfoil', 'betz', 'cp ', 'power coefficient'] },
+    { topic: 'proj_wind_resource', kws: ['wind resource assessment', 'site selection', 'european wind atlas'] },
+    { topic: 'proj_microgrid', kws: ['zero-emission microgrid', 'zero emission microgrid', 'oemof.solph', 'oemof'] },
+    { topic: 'proj_solarpv', kws: ['residential solar', 'residential pv', 'techno-economic residential'] },
+    { topic: 'proj_lca', kws: ['rechargeable', 'disposable battery', 'aa batteries', 'nimh', 'alkaline'] },
+    { topic: 'proj_aquatic', kws: ['aquatic cleaner', 'solar-powered aquatic', 'solar powered aquatic'] },
+
+    { topic: 'edu_meng', kws: ['m.eng', 'meng', 'ostbayerische', 'amberg-weiden', 'amberg weiden', 'international energy engineering', 'master'] },
+    { topic: 'edu_be', kws: ['savitribai phule', 'sppu', 'pune university', 'bachelor of engineering', 'mechanical engineering degree'] },
+    { topic: 'edu_diploma', kws: ['government polytechnic', 'jalgaon', 'diploma'] },
+
+    { topic: 'languages', kws: ['language', 'speak', 'marathi', 'hindi', 'fluent', 'langue', 'parle', 'sprache', 'spricht', 'taal', 'spreekt'] },
+    { topic: 'location', kws: ['location', 'based', 'where', 'relocate', 'amberg,', 'live', 'localisation', 'basé', 'où', 'standort', 'wo lebt', 'locatie', 'gevestigd'] },
+    { topic: 'contact', kws: ['contact', 'email', 'e-mail', 'reach', 'hire', 'phone', 'get in touch', 'joindre', 'embaucher', 'téléphone', 'kontakt', 'einstellen', 'telefon'] },
+    { topic: 'thanks', kws: ['thank', 'thanks', 'merci', 'danke', 'bedankt'] }
+  ];
+
+  const GENERAL_RULES = [
+    { topic: 'greeting', kws: ['hi', 'hello', 'hey', 'hola', 'bonjour', 'salut', 'hallo', 'hoi'] },
+    { topic: 'experience_overview', kws: ['experience', 'work history', 'job', 'role', 'career', 'worked', 'intern', 'expérience', 'poste', 'carrière', 'erfahrung', 'karriere', 'ervaring', 'werkervaring'] },
+    { topic: 'skills_overview', kws: ['skill', 'tech stack', 'tools', 'technologies', 'engineering competencies', 'compétence', 'outils', 'fähigkeit', 'werkzeuge', 'vaardigheid', 'tools'] },
+    { topic: 'projects_overview', kws: ['project', 'github', 'repo', 'portfolio work', 'built', 'projet', 'projekt', 'gebouwd'] },
+    { topic: 'certifications_overview', kws: ['certification', 'cert', 'credential', 'focus area', 'zertifizierung', 'certificering'] },
+    { topic: 'education_overview', kws: ['education', 'degree', 'study', 'studied', 'university', 'school', 'formation', 'diplôme', 'étudié', 'ausbildung', 'studium', 'universität', 'opleiding', 'studie'] },
+    { topic: 'about', kws: ['about', 'who is', 'who are you', 'introduce', 'summary', 'à propos', 'qui est', 'über', 'wer ist', 'over hem', 'wie is'] }
+  ];
+
+  function bestMatch(rules, lower){
+    let best = null, bestScore = 0;
+    for (const rule of rules){
+      let score = 0;
+      for (const kw of rule.kws){ if (lower.includes(kw)) score += kw.length; }
+      if (score > bestScore){ bestScore = score; best = rule.topic; }
+    }
+    return best;
+  }
+
+  function matchTopic(msg){
+    const lower = msg.toLowerCase();
+    return bestMatch(SPECIFIC_RULES, lower) || bestMatch(GENERAL_RULES, lower);
+  }
+
+  /* ---- Predictive question bank for the autocomplete dropdown -----
+     A curated set of natural-language questions, localized, each tied
+     directly to a KB topic so the reply is always exact - no guessing. */
+  const QUESTION_BANK = [
+    { topic: 'experience_overview', en: 'What is your work experience?', fr: 'What is your work experience?', de: 'What is your work experience?', nl: 'What is your work experience?' },
+    { topic: 'exp_ge', en: 'Tell me about GE India', fr: 'Tell me about GE India', de: 'Tell me about GE India', nl: 'Tell me about GE India' },
+    { topic: 'exp_lg', en: 'What did you do at LG India?', fr: 'What did you do at LG India?', de: 'What did you do at LG India?', nl: 'What did you do at LG India?' },
+    { topic: 'skills_overview', en: 'What are your technical skills?', fr: 'What are your technical skills?', de: 'What are your technical skills?', nl: 'What are your technical skills?' },
+    { topic: 'skills_wind', en: 'What wind energy skills do you have?', fr: 'What wind energy skills do you have?', de: 'What wind energy skills do you have?', nl: 'What wind energy skills do you have?' },
+    { topic: 'skills_software', en: 'Which software do you use (QBlade, Polysun)?', fr: 'Which software do you use (QBlade, Polysun)?', de: 'Which software do you use (QBlade, Polysun)?', nl: 'Which software do you use (QBlade, Polysun)?' },
+    { topic: 'projects_overview', en: 'What projects have you built?', fr: 'What projects have you built?', de: 'What projects have you built?', nl: 'What projects have you built?' },
+    { topic: 'proj_hawt', en: 'Tell me about your HAWT design project', fr: 'Tell me about your HAWT design project', de: 'Tell me about your HAWT design project', nl: 'Tell me about your HAWT design project' },
+    { topic: 'proj_microgrid', en: 'Tell me about the zero-emission microgrid project', fr: 'Tell me about the zero-emission microgrid project', de: 'Tell me about the zero-emission microgrid project', nl: 'Tell me about the zero-emission microgrid project' },
+    { topic: 'education_overview', en: 'Where did you study?', fr: 'Where did you study?', de: 'Where did you study?', nl: 'Where did you study?' },
+    { topic: 'edu_meng', en: 'Tell me about your Master\'s degree', fr: 'Tell me about your Master\'s degree', de: 'Tell me about your Master\'s degree', nl: 'Tell me about your Master\'s degree' },
+    { topic: 'languages', en: 'What languages do you speak?', fr: 'What languages do you speak?', de: 'What languages do you speak?', nl: 'What languages do you speak?' },
+    { topic: 'location', en: 'Where are you based?', fr: 'Where are you based?', de: 'Where are you based?', nl: 'Where are you based?' },
+    { topic: 'contact', en: 'How can I contact you?', fr: 'How can I contact you?', de: 'How can I contact you?', nl: 'How can I contact you?' },
+    { topic: 'about', en: 'Who are you?', fr: 'Who are you?', de: 'Who are you?', nl: 'Who are you?' }
+  ];
+
+  function currentSiteLang(){
+    return (typeof currentLang !== 'undefined' && KB[currentLang]) ? currentLang : 'en';
+  }
+  function kbText(topic){
+    const lang = currentSiteLang();
+    return (KB[lang] && KB[lang][topic]) || KB.en[topic] || KB.en.fallback;
+  }
+
+  const chatFab = document.getElementById('chatFab');
+  const chatPanel = document.getElementById('chatPanel');
+  const chatClose = document.getElementById('chatClose');
+  const chatBody = document.getElementById('chatBody');
+  const chatInput = document.getElementById('chatInput');
+  const chatMic = document.getElementById('chatMic');
+  const chatSend = document.getElementById('chatSend');
+  const chatSuggestions = document.getElementById('chatSuggestions');
+  const chatAutocomplete = document.getElementById('chatAutocomplete');
+  let greeted = false;
+  let acItems = [];
+  let acIndex = -1;
+
+  function addMessage(text, who, topic){
+    const el = document.createElement('div');
+    el.className = 'chat-msg ' + who;
+    el.innerHTML = text;
+    if (who === 'bot' && topic) el.dataset.topic = topic;
+    chatBody.appendChild(el);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    if (who === 'bot' && window.__speakBotMessage) window.__speakBotMessage(text, currentSiteLang());
+  }
+
+  function showTyping(){
+    const el = document.createElement('div');
+    el.className = 'typing-indicator';
+    el.id = 'typingIndicator';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    chatBody.appendChild(el);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+  function hideTyping(){
+    const el = document.getElementById('typingIndicator');
+    if (el) el.remove();
+  }
+
+  function replyWithTopic(topic){
+    showTyping();
+    setTimeout(() => {
+      hideTyping();
+      addMessage(kbText(topic), 'bot', topic);
+    }, 500 + Math.random() * 300);
+  }
+
+  /* Send a message where the reply topic is already known (quick chips
+     and autocomplete picks) - skips keyword matching entirely so these
+     answers are always exactly right. */
+  function sendKnownTopic(displayText, topic){
+    addMessage(displayText.replace(/</g,'&lt;'), 'user');
+    closeAutocomplete();
+    replyWithTopic(topic);
+  }
+
+  /* Free-text input still goes through keyword matching across all
+     four languages, so a visitor can type in whichever language they
+     like and get matched regardless of the current display language. */
+  function respond(userText){
+    addMessage(userText.replace(/</g,'&lt;'), 'user');
+    closeAutocomplete();
+    showTyping();
+    setTimeout(() => {
+      hideTyping();
+      const topic = matchTopic(userText) || 'fallback';
+      addMessage(kbText(topic), 'bot', topic);
+    }, 550 + Math.random() * 350);
+  }
+
+  function openChat(){
+    chatPanel.classList.add('open');
+    if (!greeted){
+      greeted = true;
+      setTimeout(() => addMessage(kbText('greeting'), 'bot', 'greeting'), 200);
+    }
+    chatInput.focus();
+  }
+  function closeChat(){
+    chatPanel.classList.remove('open');
+    closeAutocomplete();
+    // Closing the panel should fully quiet the assistant - stop any voice
+    // reply currently being spoken, and stop listening if the mic was on.
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    if (recognizer && listening) recognizer.stop();
+  }
+
+  chatFab.addEventListener('click', () => {
+    chatPanel.classList.contains('open') ? closeChat() : openChat();
+  });
+  chatClose.addEventListener('click', closeChat);
+  chatSend.addEventListener('click', () => {
+    const val = chatInput.value.trim();
+    if (!val) return;
+    chatInput.value = '';
+    respond(val);
+  });
+
+  /* ---- Voice input: speak a question instead of typing it -----
+     Uses the browser's built-in SpeechRecognition (no external API).
+     Listens in whatever language the site's toggle is currently set
+     to, so the transcript lands in the matching language automatically. */
+  const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const SPEECH_LOCALES = { en: 'en-IN', fr: 'fr-FR', de: 'de-DE', nl: 'nl-NL' };
+  let recognizer = null, listening = false;
+
+  if (chatMic && SpeechRecognitionAPI) {
+    recognizer = new SpeechRecognitionAPI();
+    recognizer.continuous = false;
+    recognizer.interimResults = true;
+    recognizer.maxAlternatives = 1;
+
+    recognizer.onstart = () => {
+      listening = true;
+      chatMic.classList.add('listening');
+      chatMic.querySelector('i').className = 'fas fa-microphone-lines';
+      chatInput.placeholder = t('chat.listening') || 'Listening…';
+    };
+
+    recognizer.onresult = (e) => {
+      let transcript = '';
+      for (let i = 0; i < e.results.length; i++) transcript += e.results[i][0].transcript;
+      chatInput.value = transcript;
+      if (e.results[e.results.length - 1].isFinal) renderAutocomplete(''); // clear any stale dropdown
+    };
+
+    recognizer.onerror = (e) => {
+      stopListening();
+      if (e.error === 'not-allowed' || e.error === 'permission-denied') {
+        micPermissionDenied = true;
+        addMessage(t('chat.micDenied') || "I can't hear you - microphone access is blocked. Allow it from the lock/site-info icon in your address bar, then try again.", 'bot');
+      }
+    };
+    recognizer.onend = () => {
+      stopListening();
+      const val = chatInput.value.trim();
+      if (val) { chatInput.value = ''; respond(val); }
+    };
+
+    function stopListening(){
+      listening = false;
+      chatMic.classList.remove('listening');
+      chatMic.querySelector('i').className = 'fas fa-microphone';
+      chatInput.placeholder = t('chat.placeholder');
+    }
+
+    /* Ask for the microphone explicitly, once, via getUserMedia before the
+       first recognizer.start(). This is what actually gets the browser to
+       remember "allow" for this site - starting SpeechRecognition directly
+       re-prompts on some browsers (notably Firefox, and any site opened as
+       a local file:// page, where permissions can't be remembered at all)
+       because it doesn't go through the standard permission-persistence
+       path the way an explicit getUserMedia call does. */
+    let micPrimed = false, micPermissionDenied = false;
+    async function primeMicPermission(){
+      if (micPrimed || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { micPrimed = true; return true; }
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        stream.getTracks().forEach(track => track.stop()); // we only needed the permission grant, not the stream
+        micPrimed = true;
+        return true;
+      } catch (err) {
+        micPermissionDenied = true;
+        addMessage(t('chat.micDenied') || "I can't hear you - microphone access is blocked. Allow it from the lock/site-info icon in your address bar, then try again.", 'bot');
+        return false;
+      }
+    }
+
+    chatMic.addEventListener('click', async () => {
+      if (listening) { recognizer.stop(); return; }
+      if (micPermissionDenied) { await primeMicPermission(); if (micPermissionDenied) return; }
+      const ok = await primeMicPermission();
+      if (!ok) return;
+      try {
+        recognizer.lang = SPEECH_LOCALES[currentSiteLang()] || 'en-IN';
+        recognizer.start();
+      } catch(e) { /* already running - ignore */ }
+    });
+  } else if (chatMic) {
+    chatMic.disabled = true;
+    chatMic.title = 'Voice input isn\'t supported in this browser';
+  }
+
+  chatSuggestions.addEventListener('click', (e) => {
+    const chip = e.target.closest('.chat-chip');
+    if (!chip) return;
+    sendKnownTopic(chip.textContent, chip.dataset.topic);
+  });
+
+  /* ---- Predictive autocomplete ---- */
+  function closeAutocomplete(){
+    chatAutocomplete.classList.remove('open');
+    chatAutocomplete.innerHTML = '';
+    acItems = []; acIndex = -1;
+  }
+
+  function renderAutocomplete(query){
+    const lang = currentSiteLang();
+    const q = query.trim().toLowerCase();
+    if (!q){ closeAutocomplete(); return; }
+    acItems = QUESTION_BANK
+      .filter(item => (item[lang] || item.en).toLowerCase().includes(q))
+      .slice(0, 5);
+    acIndex = -1;
+    if (!acItems.length){ closeAutocomplete(); return; }
+    chatAutocomplete.innerHTML = acItems.map((item, i) =>
+      `<div class="chat-autocomplete-item" data-index="${i}"><i class="fas fa-magnifying-glass"></i>${(item[lang] || item.en)}</div>`
+    ).join('');
+    chatAutocomplete.classList.add('open');
+  }
+
+  function pickAutocomplete(i){
+    const item = acItems[i];
+    if (!item) return;
+    const lang = currentSiteLang();
+    chatInput.value = '';
+    sendKnownTopic(item[lang] || item.en, item.topic);
+  }
+
+  chatInput.addEventListener('input', () => renderAutocomplete(chatInput.value));
+  chatInput.addEventListener('focus', () => { if (chatInput.value.trim()) renderAutocomplete(chatInput.value); });
+  chatInput.addEventListener('blur', () => setTimeout(closeAutocomplete, 150));
+
+  chatAutocomplete.addEventListener('mousedown', (e) => {
+    const item = e.target.closest('.chat-autocomplete-item');
+    if (!item) return;
+    pickAutocomplete(parseInt(item.dataset.index, 10));
+  });
+
+  chatInput.addEventListener('keydown', (e) => {
+    if (chatAutocomplete.classList.contains('open') && acItems.length){
+      if (e.key === 'ArrowDown'){
+        e.preventDefault();
+        acIndex = Math.min(acIndex + 1, acItems.length - 1);
+        updateActiveItem();
+        return;
+      }
+      if (e.key === 'ArrowUp'){
+        e.preventDefault();
+        acIndex = Math.max(acIndex - 1, 0);
+        updateActiveItem();
+        return;
+      }
+      if (e.key === 'Enter' && acIndex >= 0){
+        e.preventDefault();
+        pickAutocomplete(acIndex);
+        return;
+      }
+      if (e.key === 'Escape'){ closeAutocomplete(); return; }
+    }
+    if (e.key === 'Enter') chatSend.click();
+  });
+
+  function updateActiveItem(){
+    chatAutocomplete.querySelectorAll('.chat-autocomplete-item').forEach((el, i) => {
+      el.classList.toggle('active', i === acIndex);
+    });
+  }
+
+  /* Re-translate every bot message currently shown in the conversation
+     (including the welcome message) to the newly selected language.
+     Called from applyLanguage() whenever the nav language toggle changes. */
+  function refreshChatLanguage(){
+    chatBody.querySelectorAll('.chat-msg.bot[data-topic]').forEach(el => {
+      el.innerHTML = kbText(el.dataset.topic);
+    });
+  }
+  window.__refreshChatLanguage = refreshChatLanguage;
+
+})();
+</script>
+
+<script>
+/* ===== Two-layer binaural ambience (synthesized, whole-portfolio, no audio files) =====
+   Layer 1 - gamma "focus" layer: two sine oscillators panned hard left/right,
+   40Hz apart, so the brain perceives a 40Hz beat (a common ambient focus aid).
+   Layer 2 - theta "calm" layer: a second, lower pair of oscillators 6Hz apart,
+   mixed in underneath at a lower level, giving the tone a fuller, layered
+   texture instead of a single flat pitch. Both layers run together for as
+   long as the tab stays open, independent of which section is in view.
+   Browsers block audio before a user gesture, so playback (and any saved
+   on/off preference from a previous visit) is armed on the first click,
+   keypress, or touch anywhere on the page. */
+(function(){
+  const LAYERS = [
+    { base: 200, beat: 40, gain: 0.020 }, // gamma focus layer
+    { base: 90,  beat: 6,  gain: 0.012 }  // theta calm layer, mixed underneath
+  ];
+  const FADE_IN = 1.4, FADE_OUT = 0.7;
+
+  const toggleBtn = document.getElementById('binauralToggle');
+  let audioCtx = null, masterGain = null, muteGain = null, activeLayers = [];
+  let isPlaying = false;
+  let enabled = localStorage.getItem('binauralOn') === 'true';
+  let globallyMuted = false;
+
+  function ensureCtx(){
+    if (!audioCtx){
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) audioCtx = new AC();
+    }
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    if (audioCtx && !muteGain){
+      // A separate always-on gain stage sits between the ambience and the
+      // speakers, purely so the global mute button can silence it without
+      // touching the "is the ambience on at all" preference below.
+      muteGain = audioCtx.createGain();
+      muteGain.gain.value = globallyMuted ? 0 : 1;
+      muteGain.connect(audioCtx.destination);
+    }
+    return audioCtx;
+  }
+
+  function panned(ctx, oscGain, pan){
+    if (ctx.createStereoPanner){
+      const p = ctx.createStereoPanner();
+      p.pan.value = pan;
+      oscGain.connect(p);
+      return p;
+    }
+    return oscGain; // very old browsers: fall back to unpanned (still plays)
+  }
+
+  function startLayer(ctx, dest, layer){
+    const layerGain = ctx.createGain();
+    layerGain.gain.value = layer.gain;
+    layerGain.connect(dest);
+
+    const leftOsc = ctx.createOscillator();
+    leftOsc.type = 'sine';
+    leftOsc.frequency.value = layer.base;
+    const leftGain = ctx.createGain(); leftGain.gain.value = 1;
+    leftOsc.connect(leftGain);
+    panned(ctx, leftGain, -1).connect(layerGain);
+
+    const rightOsc = ctx.createOscillator();
+    rightOsc.type = 'sine';
+    rightOsc.frequency.value = layer.base + layer.beat;
+    const rightGain = ctx.createGain(); rightGain.gain.value = 1;
+    rightOsc.connect(rightGain);
+    panned(ctx, rightGain, 1).connect(layerGain);
+
+    leftOsc.start();
+    rightOsc.start();
+    return [leftOsc, rightOsc];
+  }
+
+  function start(){
+    const ctx = ensureCtx();
+    if (!ctx || isPlaying) return;
+
+    masterGain = ctx.createGain();
+    masterGain.gain.setValueAtTime(0.0001, ctx.currentTime);
+    masterGain.gain.exponentialRampToValueAtTime(1, ctx.currentTime + FADE_IN);
+    masterGain.connect(muteGain);
+
+    activeLayers = LAYERS.flatMap(layer => startLayer(ctx, masterGain, layer));
+    isPlaying = true;
+  }
+
+  function stop(){
+    if (!isPlaying || !audioCtx) return;
+    const now = audioCtx.currentTime;
+    if (masterGain){
+      masterGain.gain.cancelScheduledValues(now);
+      masterGain.gain.setValueAtTime(masterGain.gain.value, now);
+      masterGain.gain.linearRampToValueAtTime(0.0001, now + FADE_OUT);
+    }
+    const oscs = activeLayers;
+    setTimeout(() => {
+      oscs.forEach(o => { try { o.stop(); o.disconnect(); } catch(e){} });
+    }, FADE_OUT * 1000 + 60);
+    activeLayers = [];
+    isPlaying = false;
+  }
+
+  function setUI(on){
+    if (!toggleBtn) return;
+    toggleBtn.classList.toggle('active', on);
+    toggleBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    toggleBtn.title = on ? 'Pause layered binaural ambience' : 'Play layered binaural ambience';
+  }
+  setUI(enabled);
+
+  if (toggleBtn){
+    toggleBtn.addEventListener('click', () => {
+      enabled = !enabled;
+      localStorage.setItem('binauralOn', enabled);
+      ensureCtx();
+      if (enabled) start(); else stop();
+      setUI(enabled);
+    });
+  }
+
+  // If the tone was left on in a previous visit, resume it as soon as the
+  // browser allows audio to play - on the very first interaction anywhere
+  // on the page - so it plays across the whole portfolio without the
+  // visitor needing to find and re-click the toggle.
+  ['click', 'keydown', 'touchstart'].forEach(evt => {
+    window.addEventListener(evt, () => {
+      if (enabled && !isPlaying) start();
+    }, { once: true, passive: true });
+  });
+
+  // Be a good background-tab citizen: suspend while the tab is hidden,
+  // resume automatically when it becomes visible again (if still enabled).
+  document.addEventListener('visibilitychange', () => {
+    if (!audioCtx) return;
+    if (document.hidden) audioCtx.suspend();
+    else if (enabled) audioCtx.resume();
+  });
+
+  window.__setBinauralMuted = (muted) => {
+    globallyMuted = muted;
+    ensureCtx();
+    if (!muteGain || !audioCtx) return;
+    const now = audioCtx.currentTime;
+    muteGain.gain.cancelScheduledValues(now);
+    muteGain.gain.setValueAtTime(muteGain.gain.value, now);
+    muteGain.gain.linearRampToValueAtTime(muted ? 0 : 1, now + 0.25);
+  };
+})();
+</script>
+
+<script>
+/* ===== Global page-audio mute (voice replies + binaural ambience) =====
+   The single mute button in corner-controls, next to the binaural toggle,
+   silences every audio source on the page at once: bot voice replies and
+   the binaural ambience layers - without changing whether binaural
+   ambience is turned on, so un-muting restores whatever was already
+   playing. Each source exposes its own __set*Muted setter; this script
+   is just the shared switch and the button's UI. */
+(function(){
+  const btn = document.getElementById('globalMuteToggle');
+  let muted = localStorage.getItem('pageAudioMuted') === 'true';
+
+  function applyMute(next){
+    muted = next;
+    localStorage.setItem('pageAudioMuted', muted);
+    if (window.__setVoiceMuted) window.__setVoiceMuted(muted);
+    if (window.__setBinauralMuted) window.__setBinauralMuted(muted);
+    if (muted && window.speechSynthesis) window.speechSynthesis.cancel();
+    setUI(muted);
+  }
+
+  function setUI(on){
+    if (!btn) return;
+    btn.classList.toggle('muted', on);
+    btn.setAttribute('aria-pressed', String(on));
+    btn.title = on ? 'Unmute all sound (voice, binaural)' : 'Mute all sound (voice, binaural)';
+    btn.innerHTML = on ? '<i class="fas fa-volume-xmark"></i>' : '<i class="fas fa-volume-high"></i>';
+  }
+
+  applyMute(muted); // sync every audio source to the saved preference on load
+
+  if (btn) btn.addEventListener('click', () => applyMute(!muted));
+})();
+</script>
+
+<script>
+/* ===== CMA CGM "View full pipeline architecture" expand-in-place panel =====
+   Pure CSS grid-template-rows animation (0fr -> 1fr) driven by an .open
+   class, so no height measuring is needed in JS - this toggle just flips
+   the class, the aria-expanded state, and the button's chevron icon. */
+(function(){
+  const btn = document.getElementById('cmaArchToggle');
+  const wrap = document.getElementById('cmaArchPanelWrap');
+  if (!btn || !wrap) return;
+
+  // Attention signal: keep the breathing ring + dot only until the visitor
+  // has opened the panel at least once (persisted so it never nags a
+  // returning visitor), and cap it at ~4 pulses on first visit either way
+  // so it never turns into permanent motion on the page.
+  try {
+    if (localStorage.getItem('archPanelSeen') === 'true') {
+      btn.classList.remove('pulse-attn');
+    } else {
+      setTimeout(() => btn.classList.remove('pulse-attn'), 9000);
+    }
+  } catch(e){}
+
+  btn.addEventListener('click', () => {
+    const isOpen = wrap.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    const label = btn.querySelector('span');
+    if (label) label.textContent = isOpen ? 'Hide full pipeline architecture' : 'View full pipeline architecture';
+    if (isOpen){
+      btn.classList.remove('pulse-attn');
+      try { localStorage.setItem('archPanelSeen', 'true'); } catch(e){}
+    }
+  });
+})();
+</script>
+
+<script>
+/* ===== Dark theme toggle (inverted palette, whole portfolio) =====
+   Swaps the page from the light grey theme to a black/near-black theme
+   with contrasting light text, via the [data-theme="dark"] CSS variable
+   overrides defined in <style>. The hero illustration and the energy
+   particle canvas both re-tint themselves through the same mechanism -
+   see .hero-bg-image's filter and the icon-background script's color logic. */
+(function(){
+  const root = document.documentElement;
+  const toggleBtn = document.getElementById('themeToggle');
+  let theme = localStorage.getItem('siteTheme') || 'light';
+
+  function applyTheme(t){
+    theme = t;
+    if (t === 'dark') root.setAttribute('data-theme', 'dark');
+    else root.removeAttribute('data-theme');
+    try { localStorage.setItem('siteTheme', t); } catch(e){}
+
+    if (toggleBtn){
+      const isDark = t === 'dark';
+      toggleBtn.classList.toggle('active', isDark);
+      toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+      toggleBtn.querySelector('i').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+      toggleBtn.title = isDark ? 'Switch to light theme' : 'Switch to dark theme';
+    }
+
+    // Let the energy-particle canvas (and anything else that cares) know
+    // the accent color just changed, so it can re-read the new CSS var.
+    document.dispatchEvent(new CustomEvent('sitethemechange', { detail: { theme: t } }));
+  }
+
+  applyTheme(theme);
+
+  if (toggleBtn){
+    toggleBtn.addEventListener('click', () => applyTheme(theme === 'dark' ? 'light' : 'dark'));
+  }
+})();
+</script>
+
+</body>
+</html>
